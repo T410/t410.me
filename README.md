@@ -4,7 +4,7 @@ A simple site that I try to showcase my projects and my "articles" that I wrote.
 
 ### Live Here
 
-[![t410.me demo](https://img.shields.io/badge/-t410.me-green?style=for-the-badge&link=https://t410.me/)](https://t410.me/){:target="\_blank"}
+<a href="https://t410.me/"><img src="https://img.shields.io/badge/-t410.me-green?style=for-the-badge" target="_blank"/></a>
 
 ## Disclaimer
 
@@ -12,9 +12,9 @@ This React App was not developed with the intention of being used as a boilerpla
 
 ## Tech
 
-- React (create-react-app)
-- React Router
-- TypeScript
+![React](https://img.shields.io/badge/-react-black?logo=react&style=for-the-badge)
+![React Router](https://img.shields.io/badge/-reactrouter-black?logo=react-router&style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/-typescript-black?logo=typescript&style=for-the-badge)
 
 ## Installation
 

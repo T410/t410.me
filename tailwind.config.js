@@ -3,6 +3,15 @@ const colors = require("tailwindcss/colors");
 
 const vars = {
 	siteWidth: "1280px",
+	large: {
+		sidebarLeftWidth: "240px",
+		sidebarRightWidth: "1fr",
+		contentWidth: "2fr",
+	},
+	medium: {
+		sidebarLeftWidth: "2fr",
+		contentWidth: "5fr",
+	},
 };
 
 module.exports = {
@@ -10,7 +19,8 @@ module.exports = {
 	theme: {
 		extend: {
 			gridTemplateColumns: {
-				layout: "10rem auto",
+				"layout-lg": `${vars.large.sidebarLeftWidth} ${vars.large.contentWidth} ${vars.large.sidebarRightWidth}`,
+				"layout-md": `${vars.medium.sidebarLeftWidth} ${vars.medium.contentWidth}`,
 			},
 			gridTemplateRows: {
 				layout: "1fr 12fr 1fr",
@@ -25,6 +35,9 @@ module.exports = {
 				custom: {
 					black: "#08090a",
 				},
+			},
+			maxWidth: {
+				site: vars.siteWidth,
 			},
 		},
 	},
@@ -93,6 +106,9 @@ module.exports = {
 					bottom: 0,
 					right: 0,
 				},
+				".main-content": {
+					minWidth: "0px",
+				},
 				".new-tab": {
 					"&:after": {
 						content: "' ↗'",
@@ -156,6 +172,22 @@ module.exports = {
 			});
 
 			addBase({
+				":root": {
+					"--site-width": vars.siteWidth,
+					"--layout-sidebar-left-width": vars.medium.sidebarLeftWidth,
+					"--layout-content-width": vars.medium.contentWidth,
+					"--layout": "100%",
+					"@media (min-width: 768px)": {
+						"--layout": "var(--layout-sidebar-left-width) var(--layout-content-width)",
+					},
+					"@media (min-width: 1024px)": {
+						"--layout-sidebar-left-width": vars.large.sidebarLeftWidth,
+						"--layout-content-width": vars.large.contentWidth,
+						"--layout-sidebar-right-width": vars.large.sidebarRightWidth,
+						"--layout":
+							"var(--layout-sidebar-left-width) var(--layout-content-width) var(--layout-sidebar-right-width)",
+					},
+				},
 				"html, body": {
 					color: "white",
 				},
@@ -174,6 +206,15 @@ module.exports = {
 				},
 				ul: {
 					listStyleType: "disc",
+				},
+				main: {
+					display: "grid",
+					columnGap: theme("spacing.4"),
+					padding: theme("spacing.4"),
+					margin: "0 auto",
+					width: "100%",
+					maxWidth: "var(--site-width)",
+					gridTemplateColumns: "var(--layout)",
 				},
 			});
 		}),

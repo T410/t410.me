@@ -30,32 +30,6 @@ const projectType: Query = {
 	],
 };
 
-async function fetchProjects() {
-	return await fetch("https://api.t410.me/.netlify/functions/graphql", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			query: `
-				{
-					projects {
-						_id
-						title
-						description
-						demo
-						source
-					}
-				}
-				`,
-		}),
-	})
-		.then((res) => res.json())
-		.then(({ data }: { data: { projects: IProject[] } }) => {
-			return data.projects;
-		});
-}
-
 const Projects = () => {
 	const [projects, setProjects] = useState<IProject[]>([]);
 	useEffect(() => {

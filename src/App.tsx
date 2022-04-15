@@ -1,6 +1,9 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useParams, useLocation } from "react-router-dom";
 import { Nav } from "components";
 import { Articles, Article, Projects, Me } from "routes";
+import { useContext, useEffect } from "react";
+import { TitleContext } from "contexts";
+import { removeDash, upperFirst } from "utils/stringParser";
 
 function WithMain({ className }: { className?: string }) {
 	return (
@@ -15,6 +18,14 @@ function WithMain({ className }: { className?: string }) {
 }
 
 function App() {
+	const { setTitle } = useContext(TitleContext);
+	const params = useParams<{}>();
+	const location = useLocation();
+
+	useEffect(() => {
+		setTitle(upperFirst(removeDash(location.pathname.split("/")[1])));
+		console.log(params, location);
+	});
 	return (
 		<>
 			<Nav />

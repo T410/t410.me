@@ -1,6 +1,5 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./Nav.module.css";
 import { Menu } from "types";
 
 const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<SetStateAction<Menu>>] }> = ({
@@ -15,10 +14,8 @@ const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<
 
 	return (
 		<Link to={`/${menuType}`}>
-			<div className={styles.navButton} onClick={handleClick}>
-				<h3 className={`${styles.notSelected} ${menu === menuType ? styles.selected : ""}`}>
-					{name || Menu[menuType]}
-				</h3>
+			<div onClick={handleClick}>
+				<h3>{name || Menu[menuType]}</h3>
 			</div>
 		</Link>
 	);
@@ -37,14 +34,14 @@ const Nav = () => {
 	}, [location.pathname, menuState]);
 
 	return (
-		<div className={styles.outerContainer}>
-			<div className={styles.middleContainer}>
-				<div className={styles.navSection}>
+		<div className="w-full flex flex-row bg-slate-600">
+			<div>
+				<div>
 					<NavButton menuType={Menu.Projects} menuState={menuState} />
 					<NavButton menuType={Menu.Articles} menuState={menuState} />
 					<NavButton menuType={Menu["About Me"]} menuState={menuState} />
 				</div>
-				<div className={styles.logoContainer}>
+				<div>
 					<NavButton menuType={Menu["About Me"]} name="Tayyib Cankat" menuState={menuState} />
 				</div>
 			</div>

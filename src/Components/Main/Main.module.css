@@ -1,0 +1,28 @@
+@import "../../vars.css";
+.outerContainer {
+	grid-area: main;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: auto;
+	grid-template-areas: "sidebar main-content";
+	background-color: var(--color-background);
+}
+
+.sidebarContainer {
+	grid-area: sidebar;
+	padding: var(--offset-margin);
+	background-color: var(--color-surface);
+}
+
+.contentContainer {
+	grid-area: main-content;
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: ". main-content .";
+	margin: var(--offset-margin);
+}
+
+.innerContentContainer {
+	grid-area: main-content;
+}

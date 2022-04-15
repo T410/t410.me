@@ -1,0 +1,56 @@
+.outerContainer {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: 1fr auto;
+	grid-template-areas:
+		". image ."
+		"details details details";
+
+	padding: 3rem;
+	text-align: center;
+	height: fit-content;
+}
+
+.image {
+	grid-area: image;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.image > img {
+	border-radius: 50%;
+	width: 50%;
+}
+
+.info {
+	height: fit-content;
+	grid-area: details;
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 1fr 2fr 1fr;
+	grid-template-areas:
+		"name"
+		"description"
+		"contact";
+}
+
+.links {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.link {
+	margin: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.link > img {
+	width: 32px;
+}

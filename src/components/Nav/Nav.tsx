@@ -47,12 +47,11 @@ const Nav = () => {
 	return (
 		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 text-white sm:flex-row sm:space-y-0">
 			<div className="flex flex-col justify-center items-center sm:hidden">
-				<button className="flex items-center border px-2 py-1 rounded" onClick={collapseButtonHandler}>
-					<img
-						src={hamburger}
-						alt="menu"
-						className="w-4 h-4 text-teal-200 border-teal-400 hover:text-white hover:border-white"
-					/>
+				<button
+					className="flex items-center border px-2 py-1 rounded border-orange-600"
+					onClick={collapseButtonHandler}
+				>
+					<img src={hamburger} alt="menu" className="w-4 h-4" />
 				</button>
 			</div>
 			<div className={`${isMenuOpen ? "block" : "hidden"} sm:block`}>

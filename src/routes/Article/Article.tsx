@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./Article.module.css";
 import { Article as IArticle } from "types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -24,7 +23,7 @@ const Article: FC<{ article?: IArticle }> = ({ article }) => {
 	}, [params.id]);
 
 	return (
-		<div className={styles.article}>
+		<div className="">
 			{articleData && (
 				<div>
 					<h1>{articleData.title}</h1>

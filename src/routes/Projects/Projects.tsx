@@ -49,7 +49,7 @@ const Projects = () => {
 					{projects.map((project) => (
 						<div
 							key={project._id}
-							className="rounded bg-slate-500 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-none hover:drop-shadow-xl"
+							className="rounded bg-slate-500 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-sm hover:drop-shadow-xl"
 						>
 							<h2 className="text-xl flex-1">{project.title}</h2>
 							<p className="text-sm">{project.description}</p>

@@ -1,7 +1,7 @@
 import styles from "./Projects.module.css";
 import { useEffect, useState } from "react";
 import { Project as IProject } from "../../types";
-
+import { Card } from "../../components";
 async function fetchProjects() {
 	return await fetch("https://api.t410.me/.netlify/functions/graphql", {
 		method: "POST",
@@ -38,15 +38,27 @@ const Projects = () => {
 	return (
 		<div className={styles.outerContainer}>
 			<h1>Projects</h1>
-			{projects.map((project) => (
-				<div key={project._id} className={styles.project}>
-					<h2>{project.title}</h2>
-					<p>{project._id}</p>
-					<p>{project.description}</p>
-					<p>{project.demo}</p>
-					<p>{project.source}</p>
-				</div>
-			))}
+			<div className={styles.projectsContainer}>
+				{projects.map((project) => (
+					<div key={project._id} className={styles.project}>
+						<Card className={styles.projectCard}>
+							<>
+								<h2>{project.title}</h2>
+								<p className={styles.desc}>{project.description}</p>
+								<div className={styles.horizontalLine} />
+								<div className={styles.links}>
+									<a href={project.demo} target="_blank" rel="noreferrer">
+										Demo Link
+									</a>
+									<a href={project.source} target="_blank" rel="noreferrer">
+										Source
+									</a>
+								</div>
+							</>
+						</Card>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

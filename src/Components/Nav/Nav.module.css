@@ -19,6 +19,7 @@
 
 .logoContainer {
 	grid-area: logo;
+	display: flex;
 }
 
 .navSection {
@@ -39,4 +40,13 @@
 
 .navButton:hover {
 	color: var(--color-text);
+}
+
+.notSelected {
+	color: var(--color-text);
+	transition: color 0.2s ease-in-out;
+}
+
+.selected {
+	color: var(--color-primary);
 }

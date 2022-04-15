@@ -8,12 +8,6 @@
 	background-color: var(--color-background);
 }
 
-.sidebarContainer {
-	grid-area: sidebar;
-	padding: var(--offset-margin);
-	background-color: var(--color-surface);
-}
-
 .contentContainer {
 	grid-area: main-content;
 	display: grid;

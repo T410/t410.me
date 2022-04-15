@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { StyleHTMLAttributes, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
 import Markdown from "./Markdown";
@@ -23,9 +23,9 @@ export default function Article() {
 	}, [params.id]);
 
 	return (
-		<div className="text-white h-full bg-neutral-900 card py-8 px-16">
+		<div className="card article-card text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
 			{articleData && (
-				<div className="overflow-y-scroll h-full px-5">
+				<div className="overflow-y-scroll h-full">
 					<div className="markdown">
 						<div className="card bg-black/80 mb-5">
 							<p>
@@ -39,7 +39,7 @@ export default function Article() {
 								{articleData.title}
 							</a>
 						</div>
-						<h1 className="text-5xl mb-10 font-extrabold">{articleData.title}</h1>
+						<h1>{articleData.title}</h1>
 						<Markdown markdown={articleData.body_markdown} />
 					</div>
 				</div>

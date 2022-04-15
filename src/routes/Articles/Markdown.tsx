@@ -48,7 +48,7 @@ export default function Markdown({ markdown }: { markdown: string }) {
 				},
 				pre: (props: any) => {
 					return (
-						<div className="mb-5 p-6 rounded-md bg-custom-black">
+						<div className="mb-4.5 p-2 lg:mb-5 lg:p-6 rounded-md bg-custom-black">
 							<SyntaxHighlighter language="javascript" style={a11yDark}>
 								{props.children
 									.map((child: React.ReactElement) => {

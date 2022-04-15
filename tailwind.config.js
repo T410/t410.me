@@ -4,9 +4,12 @@ const colors = require("tailwindcss/colors");
 const vars = {
 	siteWidth: "1280px",
 	large: {
-		sidebarLeftWidth: "240px",
+		sidebarLeftWidth: "1fr",
 		sidebarRightWidth: "1fr",
-		contentWidth: "2fr",
+		contentWidth: "10fr",
+		articleContentWidth: "10fr",
+		articleSidebarLeftWidth: "1fr",
+		articleSidebarRightWidth: "1fr",
 	},
 	medium: {
 		sidebarLeftWidth: "2fr",
@@ -38,6 +41,9 @@ module.exports = {
 			},
 			maxWidth: {
 				site: vars.siteWidth,
+			},
+			margin: {
+				4.5: "18px",
 			},
 		},
 	},
@@ -120,8 +126,10 @@ module.exports = {
 					lineHeight: theme("lineHeight.[7.5]"),
 				},
 				".markdown>h1": {
-					fontSize: theme("fontSize.5xl"),
+					fontSize: theme("fontSize.3xl"),
+					lineHeight: theme("lineHeight.[9]"),
 					fontWeight: theme("fontWeight.extrabold"),
+					marginBottom: theme("spacing.10"),
 				},
 				".markdown>h2": {
 					fontSize: theme("fontSize.3xl"),
@@ -140,9 +148,17 @@ module.exports = {
 						color: theme("colors.indigo.300"),
 					},
 				},
+				".markdown p,ul": {
+					marginBottom: theme("margin.[4.5]"),
+					"@media (min-width: 1024px)": {
+						marginBottom: theme("margin.[5]"),
+					},
+				},
 				".markdown p": {
-					fontSize: theme("fontSize.xl"),
-					marginBottom: theme("spacing.5"),
+					fontSize: theme("fontSize.lg"),
+					"@media (min-width: 1024px)": {
+						fontSize: theme("fontSize.xl"),
+					},
 				},
 				".markdown blockquote": {
 					borderLeftColor: theme("colors.neutral.700"),
@@ -169,7 +185,25 @@ module.exports = {
 					lineHeight: "1.5rem",
 					padding: `0.1rem ${theme("spacing.1")}`,
 				},
-				".lg-show": "var(--display)",
+				".sidebar-display": { display: "var(--md-hide)" },
+				".article-main": {
+					gridTemplateColumns: "var(--layout-article)",
+					padding: 0,
+					"@media (min-width: 768px)": {
+						padding: theme("spacing.2"),
+					},
+					"@media (min-width: 1024px)": {
+						padding: theme("spacing.4"),
+					},
+				},
+				".article-card": {
+					borderRadius: theme("borderRadius.none"),
+					borderWidth: theme("borderWidth.0"),
+					"@media (min-width: 768px)": {
+						borderRadius: theme("borderRadius.lg"),
+						borderWidth: theme("borderWidth.DEFAULT"),
+					},
+				},
 			});
 
 			addBase({
@@ -178,7 +212,8 @@ module.exports = {
 					"--layout-sidebar-left-width": vars.medium.sidebarLeftWidth,
 					"--layout-content-width": vars.medium.contentWidth,
 					"--layout": "100%",
-					"--layout-sidebar-right-display": "none",
+					"--md-hide": "none",
+					"--layout-article": "100%",
 					// "@media (min-width: 768px)": {
 					// 	"--layout": "var(--layout-sidebar-left-width) var(--layout-content-width)",
 					// },
@@ -186,13 +221,15 @@ module.exports = {
 						"--layout-sidebar-left-width": vars.large.sidebarLeftWidth,
 						"--layout-content-width": vars.large.contentWidth,
 						"--layout-sidebar-right-width": vars.large.sidebarRightWidth,
-						"--layout-sidebar-right-display": "block",
+						"--md-hide": "block",
+						"--layout-article-content-width": vars.large.articleContentWidth,
+						"--layout-article-sidebar-right-width": vars.large.articleSidebarRightWidth,
+						"--layout-article-sidebar-left-width": vars.large.articleSidebarLeftWidth,
+						"--layout-article":
+							"var(--layout-article-sidebar-left-width) var(--layout-article-content-width) var(--layout-article-sidebar-right-width)",
 						"--layout":
 							"var(--layout-sidebar-left-width) var(--layout-content-width) var(--layout-sidebar-right-width)",
 					},
-				},
-				".sidebar-display": {
-					display: "var(--layout-sidebar-right-display)",
 				},
 				"html, body": {
 					color: "white",
@@ -200,7 +237,7 @@ module.exports = {
 				header: {
 					width: theme("width.full"),
 					height: theme("spacing.14"),
-					boxShadow: theme("boxShadow.sm"),
+					boxShadow: theme("boxShadow.2xl"),
 					backgroundColor: theme("colors.neutral.900"),
 				},
 				h2: {
@@ -216,11 +253,14 @@ module.exports = {
 				main: {
 					display: "grid",
 					columnGap: theme("spacing.4"),
-					padding: theme("spacing.4"),
 					margin: "0 auto",
 					width: "100%",
 					maxWidth: "var(--site-width)",
 					gridTemplateColumns: "var(--layout)",
+					padding: theme("spacing.2"),
+					"@media (min-width: 1024px)": {
+						padding: theme("spacing.4"),
+					},
 				},
 			});
 		}),

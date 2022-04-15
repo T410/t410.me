@@ -72,8 +72,11 @@ const Nav = () => {
 							<NavItems menuState={menuState} />
 						</div>
 					</div>
-					<div className="ml-auto items-center flex">
-						<Link to={`/about-me`} className="absolute right-4 block top-auto mx-1 hover:cursor-pointer">
+					<div className="ml-auto items-center flex flex-row">
+						<div className="mr-6 hidden md:block">
+							<h2>Tayyib Cankat</h2>
+						</div>
+						<Link to={`/about-me`} className="right-4 block top-auto mx-1 hover:cursor-pointer">
 							<img
 								src="https://avatars.githubusercontent.com/u/8334449?v=4"
 								alt="profile"

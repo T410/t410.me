@@ -1,5 +1,5 @@
 const Item = () => {
-	return <div className="w-11/12 h-fit mx-auto p-2 text-sm rounded bg-secondary-600 text-white">Item</div>;
+	return <div className="w-11/12 h-fit mx-auto p-2 text-sm rounded bg-green-600 text-white">Item</div>;
 };
 
 const Sidebar = () => {

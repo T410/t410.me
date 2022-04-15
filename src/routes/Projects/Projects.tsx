@@ -53,7 +53,7 @@ const Projects = () => {
 						>
 							<h2 className="text-xl flex-1">{project.title}</h2>
 							<p className="text-sm">{project.description}</p>
-							<div className="border-b-2 rounded border-secondary-500" />
+							<div className="border-b-2 rounded border-green-500" />
 							<div className="flex flex-row justify-between">
 								<a href={project.demo} target="_blank" rel="noreferrer">
 									<img src="https://img.shields.io/badge/-Demo-rgb(34%20197%2094)?style=for-the-badge" alt="Demo" />

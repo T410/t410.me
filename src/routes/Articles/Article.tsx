@@ -23,9 +23,9 @@ export default function Article() {
 	}, [params.id]);
 
 	return (
-		<div className="card article-card text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
+		<div className="card article-card break-words text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
 			{articleData && (
-				<div className="overflow-y-scroll h-full">
+				<div className="h-full">
 					<div className="markdown">
 						<div className="card bg-black/80 mb-5">
 							<p>

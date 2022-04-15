@@ -14,6 +14,14 @@ module.exports = {
 			scale: {
 				102: "102%",
 			},
+			lineHeight: {
+				7.5: "30px",
+			},
+			colors: {
+				custom: {
+					black: "#08090a",
+				},
+			},
 		},
 	},
 	plugins: [
@@ -77,6 +85,67 @@ module.exports = {
 					position: "fixed",
 					top: 0,
 				},
+
+				".new-tab": {
+					"&:after": {
+						content: "' ↗'",
+						fontSize: theme("fontSize.sm"),
+						fontWeight: theme("fontWeight.bold"),
+					},
+				},
+				".markdown *": {
+					lineHeight: theme("lineHeight.[7.5]"),
+				},
+				".markdown>h1": {
+					fontSize: theme("fontSize.5xl"),
+					fontWeight: theme("fontWeight.extrabold"),
+				},
+				".markdown>h2": {
+					fontSize: theme("fontSize.3xl"),
+					fontWeight: theme("fontWeight.bold"),
+					margin: `${theme("spacing.[2.5]")} 0`,
+				},
+				".markdown>h3": {
+					fontSize: theme("fontSize.2xl"),
+					fontWeight: theme("fontWeight.bold"),
+					margin: `${theme("spacing.[2.5]")} 0`,
+				},
+				".markdown a": {
+					fontWeight: theme("fontWeight.medium"),
+					textDecoration: "underline",
+					"&:hover": {
+						color: theme("colors.indigo.300"),
+					},
+				},
+				".markdown p": {
+					fontSize: theme("fontSize.xl"),
+					marginBottom: theme("spacing.5"),
+				},
+				".markdown blockquote": {
+					borderLeftColor: theme("colors.neutral.700"),
+					borderLeftWidth: theme("borderWidth.4"),
+					paddingLeft: theme("spacing.5"),
+				},
+				".markdown pre": {
+					padding: "0 !important",
+					overflow: "auto",
+					backgroundColor: `${theme("colors.custom.black")} !important`,
+				},
+				".markdown ul": {
+					marginBottom: theme("spacing.5"),
+					paddingLeft: theme("spacing.6"),
+					fontSize: theme("fontSize.xl"),
+				},
+				".markdown img": {
+					marginLeft: "auto",
+					marginRight: "auto",
+					maxWidth: "100%",
+				},
+				".markdown code": {
+					fontSize: "1rem",
+					lineHeight: "1.5rem",
+					padding: `0.1rem ${theme("spacing.1")}`,
+				},
 			});
 
 			addBase({
@@ -92,6 +161,12 @@ module.exports = {
 				h2: {
 					fontWeight: theme("fontWeight.bold"),
 					fontSize: theme("fontSize.lg"),
+				},
+				a: {
+					color: theme("colors.indigo.400"),
+				},
+				ul: {
+					listStyleType: "disc",
 				},
 			});
 		}),

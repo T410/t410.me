@@ -26,20 +26,20 @@ const Nav = () => {
 		<div className={styles.outerContainer}>
 			<div className={styles.middleContainer}>
 				<div className={styles.navSection}>
-					<Link to="/projects">
-						<NavButton menuType={Menu.Projects} menuState={menuState} />
-					</Link>
-					<Link to="/articles">
-						<NavButton menuType={Menu.Articles} menuState={menuState} />
-					</Link>
-					<Link to="/about-me">
-						<NavButton menuType={Menu.AboutMe} menuState={menuState} />
-					</Link>
+					<NavButton menuType={Menu.Projects} menuState={menuState}>
+						<Link to="/projects" />
+					</NavButton>
+					<NavButton menuType={Menu.Articles} menuState={menuState}>
+						<Link to="/articles" />
+					</NavButton>
+					<NavButton menuType={Menu.AboutMe} menuState={menuState}>
+						<Link to="/about-me" />
+					</NavButton>
 				</div>
 				<div className={styles.logoContainer}>
-					<Link to="/about-me">
-						<NavButton menuType={Menu.AboutMe} name="Tayyib Cankat" menuState={menuState} />
-					</Link>
+					<NavButton menuType={Menu.AboutMe} name="Tayyib Cankat" menuState={menuState}>
+						<Link to="/about-me" />
+					</NavButton>
 				</div>
 			</div>
 		</div>

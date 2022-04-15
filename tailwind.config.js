@@ -1,4 +1,9 @@
 const plugin = require("tailwindcss/plugin");
+const colors = require("tailwindcss/colors");
+
+const vars = {
+	siteWidth: "1280px",
+};
 
 module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
@@ -29,8 +34,22 @@ module.exports = {
 				".card": {
 					borderRadius: theme("borderRadius.lg"),
 					borderWidth: theme("borderWidth.DEFAULT"),
-					borderColor: "rgba(150, 189, 231, 0.25)", // colors.navy.100/25
+					borderColor: "rgba(150, 189, 231, 0.25)",
+					backgroundColor: colors.neutral[900],
 					padding: theme("spacing.5"),
+				},
+				".header": {
+					position: "fixed",
+					top: 0,
+				},
+				".header-container": {
+					position: "relative",
+					padding: `0 ${theme("spacing.4")}`,
+					height: theme("spacing.14"),
+					display: "flex",
+					alignItems: "center",
+					margin: "auto",
+					maxWidth: vars.siteWidth,
 				},
 				".header-link": {
 					"&:hover": {
@@ -46,13 +65,6 @@ module.exports = {
 					backgroundColor: theme("colors.indigo.900"),
 					color: theme("colors.indigo.300"),
 					textDecoration: "none !important",
-				},
-				".header-container": {
-					position: "relative",
-					padding: `0 ${theme("spacing.4")}`,
-					height: theme("spacing.14"),
-					display: "flex",
-					alignItems: "center",
 				},
 				".hamburger": {
 					zIndex: 200,
@@ -81,11 +93,6 @@ module.exports = {
 					bottom: 0,
 					right: 0,
 				},
-				".header": {
-					position: "fixed",
-					top: 0,
-				},
-
 				".new-tab": {
 					"&:after": {
 						content: "' ↗'",

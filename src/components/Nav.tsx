@@ -72,15 +72,17 @@ const Nav = () => {
 							<NavItems menuState={menuState} />
 						</div>
 					</div>
-					<Link to={`/about-me`} className="absolute right-4 block top-auto mx-1 hover:cursor-pointer">
-						<img
-							src="https://avatars.githubusercontent.com/u/8334449?v=4"
-							alt="profile"
-							className={`rounded-full h-8 outline-4 outline outline-offset-0 hover:outline-indigo-900 ${
-								menuState[0] === Menu["About Me"] ? "outline-indigo-900" : "outline-none"
-							}`}
-						/>
-					</Link>
+					<div className="ml-auto items-center flex">
+						<Link to={`/about-me`} className="absolute right-4 block top-auto mx-1 hover:cursor-pointer">
+							<img
+								src="https://avatars.githubusercontent.com/u/8334449?v=4"
+								alt="profile"
+								className={`rounded-full h-8 outline-4 outline outline-offset-0 hover:outline-indigo-900 ${
+									menuState[0] === Menu["About Me"] ? "outline-indigo-900" : "outline-none"
+								}`}
+							/>
+						</Link>
+					</div>
 				</div>
 			</header>
 			<div className={`hamburger ${isMenuOpen ? "" : "hidden"} md:hidden`}>

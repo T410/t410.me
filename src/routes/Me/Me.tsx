@@ -13,7 +13,7 @@ const Me = () => {
 			</div>
 			<div className="flex flex-row justify-center items-center h-1/2 space-x-4">
 				<a
-					className="w-8 h-8 flex items-center justify-center"
+					className="w-8 h-8 flex items-center justify-center transition-all hover:drop-shadow-md"
 					href="https://dev.to/t410"
 					target="_blank"
 					rel="noreferrer"
@@ -21,7 +21,7 @@ const Me = () => {
 					<img src={devto} alt="dev.to profile link of Tayyib Cankat"></img>
 				</a>
 				<a
-					className="w-8 h-8 flex items-center justify-center"
+					className="w-8 h-8 flex items-center justify-center transition-all hover:drop-shadow-md"
 					href="https://linkedin.com/in/mt410/"
 					target="_blank"
 					rel="noreferrer"
@@ -29,7 +29,7 @@ const Me = () => {
 					<img src={linkedin} alt="linkedin profile of Tayyib Cankat"></img>
 				</a>
 				<a
-					className="w-8 h-8 flex items-center justify-center"
+					className="w-8 h-8 flex items-center justify-center transition-all hover:drop-shadow-md"
 					href="https://github.com/T410"
 					target="_blank"
 					rel="noreferrer"

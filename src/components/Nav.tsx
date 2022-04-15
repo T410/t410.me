@@ -72,15 +72,20 @@ const Nav = () => {
 							<NavItems menuState={menuState} />
 						</div>
 					</div>
-					<Link to={`/about-me`} className="absolute right-4 block top-auto mx-1 hover:cursor-pointer">
-						<img
-							src="https://avatars.githubusercontent.com/u/8334449?v=4"
-							alt="profile"
-							className={`rounded-full h-8 outline-4 outline-indigo-900 hover:outline ${
-								menuState[0] === Menu["About Me"] ? "outline" : "outline-hidden"
-							}`}
-						/>
-					</Link>
+					<div className="ml-auto items-center flex flex-row">
+						<div className="mr-6 hidden md:block">
+							<h2>Tayyib Cankat</h2>
+						</div>
+						<Link to={`/about-me`} className="right-4 block top-auto mx-1 hover:cursor-pointer">
+							<img
+								src="https://avatars.githubusercontent.com/u/8334449?v=4"
+								alt="profile"
+								className={`rounded-full h-10 border-4 hover:border-indigo-900 ${
+									menuState[0] === Menu["About Me"] ? "border-indigo-900" : "border-transparent"
+								}`}
+							/>
+						</Link>
+					</div>
 				</div>
 			</header>
 			<div className={`hamburger ${isMenuOpen ? "" : "hidden"} md:hidden`}>

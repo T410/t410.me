@@ -20,7 +20,7 @@ const Articles = () => {
 	}, [articles.length]);
 
 	return (
-		<div className="card bg-navy-700 grid grid-cols-1 auto-rows-fr gap-8">
+		<div className="bg-navy-700 grid grid-cols-1 auto-rows-fr gap-8">
 			{articles.map(({ id, title }) => (
 				<div className="flex flex-col" key={id}>
 					<Link to={`/articles/${id}`} className="flex-1 h-full">

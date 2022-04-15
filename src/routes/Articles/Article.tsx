@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { StyleHTMLAttributes, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
 import Markdown from "./Markdown";
@@ -23,22 +23,25 @@ export default function Article() {
 	}, [params.id]);
 
 	return (
-		<div className="text-white h-full bg-neutral-900 card py-8 px-16">
+		<div className="card article-card break-words text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
 			{articleData && (
-				<div className="overflow-y-scroll h-full px-5">
-					<div className="w-full bg-black/80 rounded-lg p-6 mb-5">
-						<p>This article was originally written for dev.to. You can read the original one here: </p>
-						<a
-							href={articleData.canonical_url}
-							className="text-blue-600 dark:text-sky-400 font-medium after:content-['_↗'] after:text-sm after:font-bold"
-							target="_blank"
-							rel="noreferrer"
-						>
-							{articleData.title}
-						</a>
+				<div className="h-full">
+					<div className="markdown">
+						<div className="card bg-black/80 mb-5">
+							<p>
+								This article was originally written for{" "}
+								<a className="new-tab" href="https://dev.to" target="_blank" rel="noreferrer">
+									dev.to
+								</a>
+								. You can read the original one here:{" "}
+							</p>
+							<a href={articleData.canonical_url} className="new-tab font-medium" target="_blank" rel="noreferrer">
+								{articleData.title}
+							</a>
+						</div>
+						<h1>{articleData.title}</h1>
+						<Markdown markdown={articleData.body_markdown} />
 					</div>
-					<h1 className="text-5xl mb-10 font-extrabold">{articleData.title}</h1>
-					<Markdown markdown={articleData.body_markdown} />
 				</div>
 			)}
 		</div>

@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from "types";
 import { hamburger, close } from "assets";

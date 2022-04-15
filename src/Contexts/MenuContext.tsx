@@ -12,10 +12,6 @@ export const MenuContext = createContext<MenuContextState>(contextDefaultValues)
 const MenuProvider: FC = ({ children }) => {
 	const [menu, setMenu] = useState<Menu>(contextDefaultValues.menu);
 
-	useEffect(() => {
-		console.log("T", menu);
-	}, [menu]);
-
 	return (
 		<MenuContext.Provider
 			value={{

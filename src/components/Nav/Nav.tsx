@@ -1,5 +1,5 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
-import { Link } from "react-router-dom";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
 import { Menu } from "../../types";
 
@@ -25,7 +25,13 @@ const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<
 };
 
 const Nav = () => {
-	const menuState = useState<Menu>(Menu["About Me"]);
+	const menuState = useState<Menu>(Menu.Undefined);
+	const location = useLocation();
+	useEffect(() => {
+		const m = location.pathname.split("/")[1] as unknown as Menu;
+		menuState[1](m);
+	}, [location.pathname, menuState]);
+
 	return (
 		<div className={styles.outerContainer}>
 			<div className={styles.middleContainer}>

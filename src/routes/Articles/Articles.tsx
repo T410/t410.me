@@ -17,7 +17,6 @@ const Articles = () => {
 		if (articles.length === 0) {
 			devto().then((data) => {
 				setArticles(data);
-				console.log(data);
 			});
 		}
 	}, [articles.length]);

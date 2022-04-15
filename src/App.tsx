@@ -1,4 +1,4 @@
-import { Nav, Main } from "./components/index";
+import { Nav, Main } from "./components/";
 import styles from "./App.module.css";
 function App() {
 	return (

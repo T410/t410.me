@@ -76,8 +76,8 @@ const Nav = () => {
 						<img
 							src="https://avatars.githubusercontent.com/u/8334449?v=4"
 							alt="profile"
-							className={`rounded-full h-8 outline-4 outline-indigo-900 hover:outline ${
-								menuState[0] === Menu["About Me"] ? "outline" : "outline-hidden"
+							className={`rounded-full h-8 outline-4 outline outline-offset-0 hover:outline-indigo-900 ${
+								menuState[0] === Menu["About Me"] ? "outline-indigo-900" : "outline-none"
 							}`}
 						/>
 					</Link>

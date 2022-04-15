@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Article.module.css";
 import { Article as IArticle } from "../../types";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 async function getArticle(id: string) {
 	const res = await fetch(`https://dev.to/api/articles/${id}`);
@@ -27,7 +28,9 @@ const Article: FC<{ article?: IArticle }> = ({ article }) => {
 			{articleData && (
 				<div>
 					<h1>{articleData.title}</h1>
-					<ReactMarkdown>{articleData?.body_markdown}</ReactMarkdown>
+					<ReactMarkdown className="markdown" remarkPlugins={[remarkGfm]}>
+						{articleData?.body_markdown}
+					</ReactMarkdown>
 				</div>
 			)}
 		</div>

@@ -10,6 +10,7 @@ render(
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<App />}>
+					<Route path="/" element={<Me />} />
 					<Route path="/projects" element={<Projects />} />
 					<Route path="/articles" element={<Articles />} />
 					<Route path="/articles/:id" element={<Article />} />

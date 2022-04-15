@@ -1,0 +1,36 @@
+.outerContainer {
+	width: 100%;
+	height: 3rem;
+	background-color: #333;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.middleContainer {
+	width: 100%;
+	padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.navSection {
+	display: flex;
+	flex-direction: row;
+}
+
+.navSection > *:not(:first-child) {
+	margin-left: 1rem;
+}
+
+.navButton {
+	cursor: pointer;
+	color: #ccc;
+	transition: color 0.2s ease-in-out;
+}
+
+.navButton:hover {
+	color: #fff;
+}

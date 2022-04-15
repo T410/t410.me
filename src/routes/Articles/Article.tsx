@@ -26,7 +26,7 @@ export default function Article() {
 		<div className="text-white h-full bg-navy-700 card">
 			{articleData && (
 				<div className="overflow-y-scroll h-full">
-					<h1 className="text-5xl">{articleData.title}</h1>
+					<h1 className="text-5xl mb-10">{articleData.title}</h1>
 					<Markdown markdown={articleData.body_markdown} />
 				</div>
 			)}

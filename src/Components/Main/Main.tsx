@@ -1,5 +1,7 @@
+import { Outlet } from "react-router-dom";
+
 import styles from "./Main.module.css";
-import { Me, Sidebar } from "../";
+import { Sidebar } from "..";
 
 const Main = () => {
 	return (
@@ -7,7 +9,7 @@ const Main = () => {
 			<Sidebar />
 			<div className={styles.contentContainer}>
 				<div className={styles.innerContentContainer}>
-					<Me />
+					<Outlet />
 				</div>
 			</div>
 		</div>

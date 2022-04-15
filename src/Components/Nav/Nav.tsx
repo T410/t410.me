@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Nav.module.css";
-import MenuProvider, { MenuContext } from "../../Contexts";
+import MenuProvider, { MenuContext } from "../../contexts";
 import { Menu } from "../../types";
 
 const NavButton: FC<{ menuType: Menu; name?: string }> = ({ menuType, name }) => {
@@ -21,12 +22,20 @@ const Nav = () => {
 		<div className={styles.outerContainer}>
 			<div className={styles.middleContainer}>
 				<div className={styles.navSection}>
-					<NavButton menuType={Menu.Projects} />
-					<NavButton menuType={Menu.Articles} />
-					<NavButton menuType={Menu.AboutMe} />
+					<Link to="/projects">
+						<NavButton menuType={Menu.Projects} />
+					</Link>
+					<Link to="/articles">
+						<NavButton menuType={Menu.Articles} />
+					</Link>
+					<Link to="/about-me">
+						<NavButton menuType={Menu.AboutMe} />
+					</Link>
 				</div>
 				<div className={styles.logoContainer}>
-					<NavButton menuType={Menu.AboutMe} name="Tayyib Cankat" />
+					<Link to="/about-me">
+						<NavButton menuType={Menu.AboutMe} name="Tayyib Cankat" />
+					</Link>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import { Card } from "../";
+import { Card } from "..";
 const Item = () => {
 	return <div className={styles.item}>Item</div>;
 };

@@ -1,4 +1,3 @@
-const colors = require("tailwindcss/colors");
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
@@ -41,6 +40,7 @@ module.exports = {
 					},
 					padding: `${theme("spacing.2")} ${theme("spacing.4")}`,
 					borderRadius: theme("borderRadius.lg"),
+					color: "white",
 				},
 				".header-link-selected": {
 					backgroundColor: theme("colors.indigo.900"),

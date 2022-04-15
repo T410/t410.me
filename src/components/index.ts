@@ -1,3 +1,4 @@
 import Nav from "./Nav";
+import Loading from "./Loading";
 
-export { Nav };
+export { Nav, Loading };

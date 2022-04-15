@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Project as IProject } from "types";
-import { spinner } from "assets";
+import { Loading } from "components";
 
 async function fetchProjects() {
 	return await fetch("https://api.t410.me/.netlify/functions/graphql", {
@@ -30,21 +30,15 @@ async function fetchProjects() {
 
 const Projects = () => {
 	const [projects, setProjects] = useState<IProject[]>([]);
-	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		fetchProjects().then((projects) => {
 			setProjects(projects);
-			setLoading(false);
 		});
 	}, []);
 
 	return (
 		<>
-			{loading ? (
-				<div className="h-full w-full flex flex-row justify-center items-center">
-					<img className="animate-spin w-20 h-20" src={spinner} alt="Loading Spinner"></img>
-				</div>
-			) : (
+			{projects.length > 0 ? (
 				<div className="grid grid-cols-1 auto-rows-fr gap-2 sm:grid-cols-2">
 					{projects.map((project) => (
 						<div
@@ -75,6 +69,8 @@ const Projects = () => {
 						</div>
 					))}
 				</div>
+			) : (
+				<Loading />
 			)}
 		</>
 	);

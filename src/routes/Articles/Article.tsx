@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
 import Markdown from "./Markdown";
+import { Loading } from "components";
 
 async function getArticle(id: string) {
 	const res = await fetch(`https://dev.to/api/articles/${id}`);
@@ -17,14 +18,13 @@ export default function Article() {
 		if (params.id) {
 			getArticle(params.id).then((data) => {
 				setArticleData(data);
-				console.log(data);
 			});
 		}
 	}, [params.id]);
 
 	return (
 		<div className="card article-card break-words text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
-			{articleData && (
+			{articleData ? (
 				<div className="h-full">
 					<div className="markdown">
 						<div className="card bg-black/80 mb-5">
@@ -45,6 +45,8 @@ export default function Article() {
 						<Markdown markdown={articleData.body_markdown} />
 					</div>
 				</div>
+			) : (
+				<Loading />
 			)}
 		</div>
 	);

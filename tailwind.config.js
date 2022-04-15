@@ -124,12 +124,6 @@ module.exports = {
 				".markdown *": {
 					lineHeight: theme("lineHeight.[7.5]"),
 				},
-				".markdown>h1": {
-					fontSize: theme("fontSize.3xl"),
-					lineHeight: theme("lineHeight.[9]"),
-					fontWeight: theme("fontWeight.extrabold"),
-					marginBottom: theme("spacing.10"),
-				},
 				".markdown>h2": {
 					fontSize: theme("fontSize.3xl"),
 					fontWeight: theme("fontWeight.bold"),

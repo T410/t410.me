@@ -39,7 +39,9 @@ export default function Article() {
 								{articleData.title}
 							</a>
 						</div>
-						<h1>{articleData.title}</h1>
+						<h1 className="font-bold text-3xl md:font-extrabold md:text-4xl md:leading-[45px] lg:text-5xl lg:leading-[60px]">
+							{articleData.title}
+						</h1>
 						<Markdown markdown={articleData.body_markdown} />
 					</div>
 				</div>

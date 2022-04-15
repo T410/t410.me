@@ -45,8 +45,8 @@ const Nav = () => {
 	}
 
 	return (
-		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 text-white md:flex-row md:space-y-0">
-			<div className="flex flex-col justify-center items-center md:hidden">
+		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 text-white sm:flex-row sm:space-y-0">
+			<div className="flex flex-col justify-center items-center sm:hidden">
 				<button className="flex items-center border px-2 py-1 rounded" onClick={collapseButtonHandler}>
 					<img
 						src={hamburger}
@@ -55,14 +55,14 @@ const Nav = () => {
 					/>
 				</button>
 			</div>
-			<div className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
+			<div className={`${isMenuOpen ? "block" : "hidden"} sm:block`}>
 				<div className="flex flex-row space-x-4">
 					<NavButton menuType={Menu.Projects} menuState={menuState} />
 					<NavButton menuType={Menu.Articles} menuState={menuState} />
 					<NavButton menuType={Menu["About Me"]} menuState={menuState} />
 				</div>
 			</div>
-			<div className="absolute right-4 top-0 md:block md:top-auto">
+			<div className="absolute right-4 top-0 sm:block sm:top-auto">
 				<NavButton menuType={Menu["About Me"]} name="Tayyib Cankat" menuState={menuState} />
 			</div>
 		</div>

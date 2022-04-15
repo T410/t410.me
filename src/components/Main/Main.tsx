@@ -3,9 +3,9 @@ import { Sidebar } from "components";
 
 const Main = () => {
 	return (
-		<div className="h-full grid sm:grid-cols-layout gap-2 bg-slate-800">
+		<div className="h-full grid sm:grid-cols-layout gap-2 bg-slate-900">
 			<Sidebar />
-			<div className="h-full p-5 rounded bg-white">
+			<div className="h-full p-5 rounded bg-slate-700">
 				<Outlet />
 			</div>
 		</div>

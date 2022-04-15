@@ -1,7 +1,5 @@
-import styles from "./Projects.module.css";
 import { useEffect, useState } from "react";
 import { Project as IProject } from "types";
-import { Card } from "components";
 import { spinner } from "assets";
 
 async function fetchProjects() {
@@ -41,33 +39,32 @@ const Projects = () => {
 	}, []);
 
 	return (
-		<div className={styles.outerContainer}>
-			<h1>Projects</h1>
+		<div className="h-full">
 			{loading ? (
-				<div className={styles.loadingContainer}>
-					<img src={spinner} alt="Loading Spinner"></img>
+				<div className="h-full w-full flex flex-row justify-center items-center">
+					<img className="animate-spin w-20 h-20" src={spinner} alt="Loading Spinner"></img>
 				</div>
 			) : (
-				<div className={styles.projectsContainer}>
+				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
 					{projects.map((project) => (
-						<div key={project._id} className={styles.project}>
-							<Card className={styles.projectCard}>
-								<>
-									<div className={styles.titleContainer}>
-										<h2>{project.title}</h2>
-									</div>
-									<p className={styles.desc}>{project.description}</p>
-									<div className={styles.horizontalLine} />
-									<div className={styles.links}>
-										<a href={project.demo} target="_blank" rel="noreferrer">
-											Demo Link
-										</a>
-										<a href={project.source} target="_blank" rel="noreferrer">
-											Source
-										</a>
-									</div>
-								</>
-							</Card>
+						<div
+							key={project._id}
+							className="rounded bg-slate-500 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-none hover:drop-shadow-xl"
+						>
+							<h2 className="text-xl flex-1">{project.title}</h2>
+							<p className="text-sm">{project.description}</p>
+							<div className="border-b-2 rounded border-orange-500" />
+							<div className="flex flex-row justify-between">
+								<a href={project.demo} target="_blank" rel="noreferrer">
+									<img src="https://img.shields.io/badge/-Demo-rgb(34%20197%2094)?style=for-the-badge" alt="Demo" />
+								</a>
+								<a href={project.source} target="_blank" rel="noreferrer">
+									<img
+										src="https://img.shields.io/badge/-Source-rgb(249%2C115%2C22)?style=for-the-badge"
+										alt="Source"
+									/>
+								</a>
+							</div>
 						</div>
 					))}
 				</div>

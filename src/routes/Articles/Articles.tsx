@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Card } from "../../components";
 import styles from "./Articles.module.css";
-import { Article } from "./types";
+import { Article as IArticle } from "../../types";
 import { Link } from "react-router-dom";
 
 async function devto() {
 	const res = await fetch("https://dev.to/api/articles?username=t410");
 	return res.json().then((data) => {
-		return data as Article[];
+		return data as IArticle[];
 	});
 }
 
 const Articles = () => {
-	const [articles, setArticles] = useState<Article[] | []>([]);
+	const [articles, setArticles] = useState<IArticle[] | []>([]);
 	useEffect(() => {
 		if (articles.length === 0) {
 			devto().then((data) => {

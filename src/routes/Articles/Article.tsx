@@ -8,6 +8,7 @@ import { fetchFrom } from "utils/API";
 export default function Article() {
 	const params = useParams<{ id: string }>();
 	const [articleData, setArticleData] = useState<IArticle>();
+
 	useEffect(() => {
 		if (params.id) {
 			const { request, abort } = fetchFrom<IArticle>(`https://dev.to/api/articles/${params.id}`);

@@ -1,6 +1,34 @@
 import { useEffect, useState } from "react";
 import { Project as IProject } from "types";
 import { Loading } from "components";
+import { fetchFrom, types, queryBuilder } from "utils/API";
+import type { Query } from "utils/API";
+
+const projectType: Query = {
+	method: "projects",
+	parameters: [
+		{
+			name: "_id",
+			resolve: types.string,
+		},
+		{
+			name: "title",
+			resolve: types.string,
+		},
+		{
+			name: "description",
+			resolve: types.string,
+		},
+		{
+			name: "demo",
+			resolve: types.string,
+		},
+		{
+			name: "source",
+			resolve: types.string,
+		},
+	],
+};
 
 async function fetchProjects() {
 	return await fetch("https://api.t410.me/.netlify/functions/graphql", {
@@ -31,9 +59,17 @@ async function fetchProjects() {
 const Projects = () => {
 	const [projects, setProjects] = useState<IProject[]>([]);
 	useEffect(() => {
-		fetchProjects().then((projects) => {
-			setProjects(projects);
-		});
+		const { request, abort } = fetchFrom<IProject>(
+			"https://api.t410.me/.netlify/functions/graphql",
+			queryBuilder(projectType)
+		);
+		request
+			.then((response) => {
+				setProjects(response);
+			})
+			.catch(() => {});
+
+		return abort;
 	}, []);
 
 	return (

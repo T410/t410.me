@@ -24,6 +24,7 @@ export interface Article {
 	title: string;
 	description: string;
 	body_markdown: string;
+	body_html: string;
 	tag_list: string;
 }
 

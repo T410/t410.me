@@ -39,7 +39,7 @@ const Projects = () => {
 	}, []);
 
 	return (
-		<div className="h-full">
+		<div className="h-full bg-navy-700 card">
 			{loading ? (
 				<div className="h-full w-full flex flex-row justify-center items-center">
 					<img className="animate-spin w-20 h-20" src={spinner} alt="Loading Spinner"></img>
@@ -49,7 +49,7 @@ const Projects = () => {
 					{projects.map((project) => (
 						<div
 							key={project._id}
-							className="rounded bg-navy-600 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-4 transition-all drop-shadow-sm hover:drop-shadow-xl"
+							className="card bg-navy-600 text-white min-h-fit h-full flex flex-col justify-between space-y-4 transition-all"
 						>
 							<h2 className="text-2xl flex-1">{project.title}</h2>
 							<p className="text-sm">{project.description}</p>

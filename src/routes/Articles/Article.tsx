@@ -1,8 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import Markdown from "./Markdown";
 
 async function getArticle(id: string) {
 	const res = await fetch(`https://dev.to/api/articles/${id}`);
@@ -11,29 +10,26 @@ async function getArticle(id: string) {
 	});
 }
 
-const Article: FC<{ article?: IArticle }> = ({ article }) => {
+export default function Article() {
 	const params = useParams<{ id: string }>();
 	const [articleData, setArticleData] = useState<IArticle>();
 	useEffect(() => {
 		if (params.id) {
 			getArticle(params.id).then((data) => {
 				setArticleData(data);
+				console.log(data);
 			});
 		}
 	}, [params.id]);
 
 	return (
-		<div className="text-white h-full">
+		<div className="text-white h-full bg-navy-700 card">
 			{articleData && (
 				<div className="overflow-y-scroll h-full">
-					<h1>{articleData.title}</h1>
-					<ReactMarkdown className="markdown" remarkPlugins={[remarkGfm]}>
-						{articleData?.body_markdown}
-					</ReactMarkdown>
+					<h1 className="text-5xl">{articleData.title}</h1>
+					<Markdown markdown={articleData.body_markdown} />
 				</div>
 			)}
 		</div>
 	);
-};
-
-export default Article;
+}

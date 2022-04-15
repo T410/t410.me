@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
@@ -9,6 +10,9 @@ module.exports = {
 			},
 			gridTemplateRows: {
 				layout: "1fr 12fr 1fr",
+			},
+			scale: {
+				102: "102%",
 			},
 		},
 		colors: {
@@ -27,5 +31,16 @@ module.exports = {
 			black: colors.black,
 		},
 	},
-	plugins: [],
+	plugins: [
+		plugin(function ({ addComponents, theme }) {
+			addComponents({
+				".card": {
+					borderRadius: theme("borderRadius.lg"),
+					borderWidth: theme("borderWidth.DEFAULT"),
+					borderColor: "rgba(150, 189, 231, 0.25)", // colors.navy.100/25
+					padding: theme("spacing.5"),
+				},
+			});
+		}),
+	],
 };

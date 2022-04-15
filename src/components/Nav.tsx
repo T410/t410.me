@@ -1,29 +1,45 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from "types";
-import { hamburger } from "assets";
+import { hamburger, close } from "assets";
 
-const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<SetStateAction<Menu>>] }> = ({
+function NavButton({
 	menuType,
 	name,
 	menuState,
-}) => {
+	onClick,
+}: {
+	menuType: Menu;
+	name?: string;
+	menuState: [Menu, Dispatch<SetStateAction<Menu>>];
+	onClick?: () => void;
+}) {
 	const [menu, setMenu] = menuState;
 	const handleClick = () => {
 		setMenu(menuType);
+		onClick?.();
 	};
 
 	return (
-		<Link to={`/${menuType}`}>
-			<div
-				onClick={handleClick}
-				className={`border-b-4 border-navy-100 ${menu === menuType ? "border-solid" : "border-dotted"}`}
-			>
-				<h3>{name || Menu[menuType]}</h3>
-			</div>
+		<Link
+			to={`/${menuType}`}
+			onClick={handleClick}
+			className={`header-link ${menu === menuType ? "header-link-selected" : ""}`}
+		>
+			{name || Menu[menuType]}
 		</Link>
 	);
-};
+}
+
+function NavItems({ menuState, onClick }: { menuState: [Menu, Dispatch<SetStateAction<Menu>>]; onClick?: () => void }) {
+	return (
+		<>
+			<NavButton menuType={Menu.Projects} menuState={menuState} onClick={onClick} />
+			<NavButton menuType={Menu.Articles} menuState={menuState} onClick={onClick} />
+			<NavButton menuType={Menu["About Me"]} menuState={menuState} onClick={onClick} />
+		</>
+	);
+}
 
 const Nav = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,28 +54,50 @@ const Nav = () => {
 		}
 	}, [location.pathname, menuState]);
 
-	function collapseButtonHandler() {
+	function toggleMenu() {
 		setIsMenuOpen(!isMenuOpen);
 	}
 
 	return (
-		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-navy-900 text-white sm:flex-row sm:space-y-0 flex-shrink-0">
-			<div className="flex flex-col justify-center items-center sm:hidden">
-				<button className="flex items-center border px-2 py-1 rounded border-navy-100" onClick={collapseButtonHandler}>
-					<img src={hamburger} alt="menu" className="w-4 h-4" />
-				</button>
-			</div>
-			<div className={`${isMenuOpen ? "block" : "hidden"} sm:block`}>
-				<div className="flex flex-row space-x-4">
-					<NavButton menuType={Menu.Projects} menuState={menuState} />
-					<NavButton menuType={Menu.Articles} menuState={menuState} />
-					<NavButton menuType={Menu["About Me"]} menuState={menuState} />
+		<>
+			<header className="header">
+				<div className="header-container">
+					<div className="flex flex-col justify-center items-center md:hidden">
+						<button className="flex items-center border px-2 py-1 rounded border-navy-100" onClick={toggleMenu}>
+							<img src={hamburger} alt="menu" className="w-4 h-4" />
+						</button>
+					</div>
+					<div className="hidden md:block">
+						<div className="flex flex-row space-x-4">
+							<NavItems menuState={menuState} />
+						</div>
+					</div>
+					<Link to={`/about-me`} className="absolute right-4 block top-auto mx-1 hover:cursor-pointer">
+						<img
+							src="https://avatars.githubusercontent.com/u/8334449?v=4"
+							alt="profile"
+							className={`rounded-full h-8 outline-4 outline-indigo-900 hover:outline ${
+								menuState[0] === Menu["About Me"] ? "outline" : "outline-hidden"
+							}`}
+						/>
+					</Link>
 				</div>
+			</header>
+			<div className={`hamburger ${isMenuOpen ? "" : "hidden"} md:hidden`}>
+				<div className="hamburger-content">
+					<header className="flex justify-between items-center pl-4 pr-2">
+						<h2>Tayyib Cankat</h2>
+						<button onClick={toggleMenu}>
+							<img src={close} alt="close hamburger menu" className="text-white" />
+						</button>
+					</header>
+					<div className="p-2 flex flex-col">
+						<NavItems menuState={menuState} onClick={toggleMenu} />
+					</div>
+				</div>
+				<div className="hamburger-overlay" onClick={toggleMenu}></div>
 			</div>
-			<div className="absolute right-4 top-0 sm:block sm:top-auto">
-				<NavButton menuType={Menu["About Me"]} name="Tayyib Cankat" menuState={menuState} />
-			</div>
-		</div>
+		</>
 	);
 };
 

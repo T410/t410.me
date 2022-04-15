@@ -17,7 +17,7 @@ const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<
 		<Link to={`/${menuType}`}>
 			<div
 				onClick={handleClick}
-				className={`underline underline-offset-2 decoration-4 decoration-orange-600 hover:decoration-solid ${
+				className={`underline underline-offset-2 decoration-4 decoration-secondary-600 hover:decoration-solid ${
 					menu === menuType ? "decoration-solid" : "decoration-dotted"
 				}`}
 			>
@@ -45,10 +45,10 @@ const Nav = () => {
 	}
 
 	return (
-		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 text-white sm:flex-row sm:space-y-0">
+		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-primary-900 text-white sm:flex-row sm:space-y-0">
 			<div className="flex flex-col justify-center items-center sm:hidden">
 				<button
-					className="flex items-center border px-2 py-1 rounded border-orange-600"
+					className="flex items-center border px-2 py-1 rounded border-secondary-600"
 					onClick={collapseButtonHandler}
 				>
 					<img src={hamburger} alt="menu" className="w-4 h-4" />

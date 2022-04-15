@@ -23,7 +23,7 @@ const Article: FC<{ article?: IArticle }> = ({ article }) => {
 	}, [params.id]);
 
 	return (
-		<div className="">
+		<div className="text-white">
 			{articleData && (
 				<div>
 					<h1>{articleData.title}</h1>

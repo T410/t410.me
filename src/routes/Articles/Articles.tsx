@@ -20,11 +20,11 @@ const Articles = () => {
 	}, [articles.length]);
 
 	return (
-		<div className="px-36 grid grid-cols-1 auto-rows-fr gap-8">
+		<div className="md:px-12 lg:px-24 xl:px-36 grid grid-cols-1 auto-rows-fr gap-8">
 			{articles.map(({ id, title }) => (
 				<div className="flex flex-col">
 					<Link to={`/articles/${id}`} className="flex-1 h-full">
-						<div className="flex-1 bg-slate-500 rounded text-white p-6 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-sm hover:drop-shadow-xl hover:scale-105">
+						<div className="flex-1 bg-primary-500 rounded text-white p-6 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-sm hover:drop-shadow-xl hover:scale-105">
 							<h2>{title}</h2>
 						</div>
 					</Link>

@@ -54,7 +54,7 @@ module.exports = {
 					borderRadius: theme("borderRadius.lg"),
 					borderWidth: theme("borderWidth.DEFAULT"),
 					borderColor: "rgba(150, 189, 231, 0.25)",
-					backgroundColor: colors.neutral[900],
+					// backgroundColor: colors.neutral[900],
 					padding: theme("spacing.5"),
 				},
 				".header": {

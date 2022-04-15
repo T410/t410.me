@@ -20,13 +20,14 @@ const Articles = () => {
 	}, [articles.length]);
 
 	return (
-		<div className="bg-navy-700 grid grid-cols-1 auto-rows-fr gap-8">
+		<div className="grid grid-cols-1 auto-rows-fr gap-2">
 			{articles.map(({ id, title }) => (
-				<div className="flex flex-col" key={id}>
-					<Link to={`/articles/${id}`} className="flex-1 h-full">
-						<div className="card flex-1 bg-navy-600 text-white min-h-fit h-full flex flex-col justify-between space-y-2 transition-all hover:scale-102">
-							<h2>{title}</h2>
-						</div>
+				<div className="flex flex-col  bg-neutral-900" key={id}>
+					<Link
+						to={`/articles/${id}`}
+						className="card flex flex-1 h-full underline text-white hover:bg-indigo-900 hover:text-indigo-300 items-center"
+					>
+						<h2>{title}</h2>
 					</Link>
 				</div>
 			))}

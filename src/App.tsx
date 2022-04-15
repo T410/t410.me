@@ -2,7 +2,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import { Nav } from "components";
 import { Articles, Article, Projects, Me } from "routes";
 
-function WithMain({ className, children }: { className?: string; children?: React.ReactNode }) {
+function WithMain({ className }: { className?: string }) {
 	return (
 		<main className={className}>
 			<div className="sidebar-display"></div>

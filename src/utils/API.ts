@@ -25,7 +25,6 @@ export interface Query {
 	method: string;
 	parameters: {
 		name: string;
-		resolve: string;
 	}[];
 }
 
@@ -41,10 +40,3 @@ function queryBuilder(query: Query) {
 }
 
 export { fetchFrom, queryBuilder };
-
-export const types = {
-	string: typeof "",
-	number: typeof 0,
-	boolean: typeof true,
-	object: typeof {},
-};

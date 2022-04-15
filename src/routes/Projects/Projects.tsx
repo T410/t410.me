@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Project as IProject } from "types";
 import { Loading } from "components";
-import { fetchFrom, types, queryBuilder } from "utils/API";
+import { fetchFrom, queryBuilder } from "utils/API";
 import type { Query } from "utils/API";
 
 const projectType: Query = {
@@ -9,23 +9,18 @@ const projectType: Query = {
 	parameters: [
 		{
 			name: "_id",
-			resolve: types.string,
 		},
 		{
 			name: "title",
-			resolve: types.string,
 		},
 		{
 			name: "description",
-			resolve: types.string,
 		},
 		{
 			name: "demo",
-			resolve: types.string,
 		},
 		{
 			name: "source",
-			resolve: types.string,
 		},
 	],
 };

@@ -1,6 +1,6 @@
-import Nav from "./Nav/Nav";
-import Main from "./Main/Main";
-import Sidebar from "./Sidebar/Sidebar";
-import Card from "./Card/Card";
+import Nav from "components/Nav/Nav";
+import Main from "components/Main/Main";
+import Sidebar from "components/Sidebar/Sidebar";
+import Card from "components/Card/Card";
 
 export { Nav, Main, Sidebar, Card };

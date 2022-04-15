@@ -1,6 +1,6 @@
-import devto from "./devto.svg";
-import github from "./github.svg";
-import linkedin from "./linkedin.svg";
-import spinner from "./spinner.svg";
+import devto from "assets/devto.svg";
+import github from "assets/github.svg";
+import linkedin from "assets/linkedin.svg";
+import spinner from "assets/spinner.svg";
 
 export { devto, github, linkedin, spinner };

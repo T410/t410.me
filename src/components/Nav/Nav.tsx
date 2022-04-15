@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Nav.module.css";
-import { Menu } from "../../types";
+import { Menu } from "types";
 
 const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<SetStateAction<Menu>>] }> = ({
 	menuType,

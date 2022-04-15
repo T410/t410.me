@@ -1,8 +1,8 @@
 import styles from "./Projects.module.css";
 import { useEffect, useState } from "react";
-import { Project as IProject } from "../../types";
-import { Card } from "../../components";
-import { spinner } from "../../assets";
+import { Project as IProject } from "types";
+import { Card } from "components";
+import { spinner } from "assets";
 
 async function fetchProjects() {
 	return await fetch("https://api.t410.me/.netlify/functions/graphql", {

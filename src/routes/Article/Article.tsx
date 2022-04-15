@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Article.module.css";
-import { Article as IArticle } from "../../types";
+import { Article as IArticle } from "types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 

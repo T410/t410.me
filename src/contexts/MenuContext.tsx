@@ -1,6 +1,5 @@
 import { createContext, useState, FC } from "react";
-import { MenuContextState } from "../types";
-import { Menu } from "../types";
+import { Menu, MenuContextState } from "types";
 
 const contextDefaultValues: MenuContextState = {
 	menu: Menu["About Me"],

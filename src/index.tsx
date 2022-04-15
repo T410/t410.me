@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css";
-import App from "./App";
-import { Articles, Article, Projects, Me } from "./routes";
+import "index.css";
+import App from "App";
+import { Articles, Article, Projects, Me } from "routes";
 
 render(
 	<React.StrictMode>

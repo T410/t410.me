@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import styles from "./Main.module.css";
-import { Sidebar } from "..";
+import { Sidebar } from "components";
 
 const Main = () => {
 	return (

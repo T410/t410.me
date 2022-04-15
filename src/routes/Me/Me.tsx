@@ -1,6 +1,6 @@
 import styles from "./Me.module.css";
-import { Card } from "../../components";
-import { devto, github, linkedin } from "../../assets";
+import { Card } from "components";
+import { devto, github, linkedin } from "assets";
 const Me = () => {
 	return (
 		<Card>

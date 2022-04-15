@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Card } from "../../components";
+import { Card } from "components";
 import styles from "./Articles.module.css";
-import { ArticleListing } from "../../types";
+import { ArticleListing } from "types";
 import { Link } from "react-router-dom";
 
 async function devto() {

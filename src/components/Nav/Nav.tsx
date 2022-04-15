@@ -28,8 +28,12 @@ const Nav = () => {
 	const menuState = useState<Menu>(Menu.Undefined);
 	const location = useLocation();
 	useEffect(() => {
-		const m = location.pathname.split("/")[1] as unknown as Menu;
-		menuState[1](m);
+		const m = location.pathname.split("/")[1] as unknown;
+		if ((m as string) === "") {
+			menuState[1](Menu["About Me"]);
+		} else {
+			menuState[1](m as Menu);
+		}
 	}, [location.pathname, menuState]);
 
 	return (

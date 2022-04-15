@@ -26,6 +26,7 @@ export interface Article {
 	body_markdown: string;
 	body_html: string;
 	tag_list: string;
+	canonical_url: string;
 }
 
 export interface Project {

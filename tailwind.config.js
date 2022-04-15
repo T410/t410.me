@@ -29,6 +29,17 @@ module.exports = {
 			},
 			white: colors.white,
 			black: colors.black,
+			sky: {
+				100: "#E6F7FF",
+				200: "#BEEBFF",
+				300: "#A2DFFF",
+				400: "#7FC0FF",
+				500: "#5DA0FF",
+				600: "#3A80FF",
+				700: "#1E60FF",
+				800: "#0A40FF",
+				900: "#0020FF",
+			},
 		},
 	},
 	plugins: [

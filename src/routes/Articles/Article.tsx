@@ -25,8 +25,19 @@ export default function Article() {
 	return (
 		<div className="text-white h-full bg-navy-700 card">
 			{articleData && (
-				<div className="overflow-y-scroll h-full">
-					<h1 className="text-5xl mb-10">{articleData.title}</h1>
+				<div className="overflow-y-scroll h-full px-5">
+					<div className="w-full bg-black/80 rounded-lg p-6 mb-5">
+						<p>This article was originally written for dev.to. You can read the original one here: </p>
+						<a
+							href={articleData.canonical_url}
+							className="text-blue-600 dark:text-sky-400 font-medium after:content-['_↗'] after:text-sm after:font-bold"
+							target="_blank"
+							rel="noreferrer"
+						>
+							{articleData.title}
+						</a>
+					</div>
+					<h1 className="text-5xl mb-10 font-extrabold">{articleData.title}</h1>
 					<Markdown markdown={articleData.body_markdown} />
 				</div>
 			)}

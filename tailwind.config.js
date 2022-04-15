@@ -169,6 +169,7 @@ module.exports = {
 					lineHeight: "1.5rem",
 					padding: `0.1rem ${theme("spacing.1")}`,
 				},
+				".lg-show": "var(--display)",
 			});
 
 			addBase({
@@ -177,16 +178,21 @@ module.exports = {
 					"--layout-sidebar-left-width": vars.medium.sidebarLeftWidth,
 					"--layout-content-width": vars.medium.contentWidth,
 					"--layout": "100%",
-					"@media (min-width: 768px)": {
-						"--layout": "var(--layout-sidebar-left-width) var(--layout-content-width)",
-					},
+					"--layout-sidebar-right-display": "none",
+					// "@media (min-width: 768px)": {
+					// 	"--layout": "var(--layout-sidebar-left-width) var(--layout-content-width)",
+					// },
 					"@media (min-width: 1024px)": {
 						"--layout-sidebar-left-width": vars.large.sidebarLeftWidth,
 						"--layout-content-width": vars.large.contentWidth,
 						"--layout-sidebar-right-width": vars.large.sidebarRightWidth,
+						"--layout-sidebar-right-display": "block",
 						"--layout":
 							"var(--layout-sidebar-left-width) var(--layout-content-width) var(--layout-sidebar-right-width)",
 					},
+				},
+				".sidebar-display": {
+					display: "var(--layout-sidebar-right-display)",
 				},
 				"html, body": {
 					color: "white",

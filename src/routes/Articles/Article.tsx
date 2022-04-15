@@ -3,22 +3,21 @@ import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
 import Markdown from "./Markdown";
 import { Loading } from "components";
-
-async function getArticle(id: string) {
-	const res = await fetch(`https://dev.to/api/articles/${id}`);
-	return res.json().then((data) => {
-		return data as IArticle;
-	});
-}
+import { fetchFrom } from "utils/API";
 
 export default function Article() {
 	const params = useParams<{ id: string }>();
 	const [articleData, setArticleData] = useState<IArticle>();
 	useEffect(() => {
 		if (params.id) {
-			getArticle(params.id).then((data) => {
-				setArticleData(data);
-			});
+			const { request, abort } = fetchFrom<IArticle>(`https://dev.to/api/articles/${params.id}`);
+			request
+				.then((data) => {
+					setArticleData(data);
+				})
+				.catch(() => {});
+
+			return abort;
 		}
 	}, [params.id]);
 

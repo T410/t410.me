@@ -2,21 +2,21 @@ import { useEffect, useState } from "react";
 import { ArticleListing } from "types";
 import { Link } from "react-router-dom";
 import { Loading } from "components";
-
-async function devto() {
-	const res = await fetch("https://dev.to/api/articles?username=t410");
-	return res.json().then((data) => {
-		return data as ArticleListing[];
-	});
-}
+import { fetchFrom } from "utils/API";
 
 const Articles = () => {
 	const [articles, setArticles] = useState<ArticleListing[] | []>([]);
 	useEffect(() => {
 		if (articles.length === 0) {
-			devto().then((data) => {
-				setArticles(data);
-			});
+			const { request, abort } = fetchFrom<ArticleListing[]>("https://dev.to/api/articles?username=t410");
+
+			request
+				.then((data) => {
+					setArticles(data);
+				})
+				.catch(() => {});
+
+			return abort;
 		}
 	}, [articles.length]);
 

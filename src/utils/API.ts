@@ -1,20 +1,19 @@
 interface Fetch<T> {
-	request: Promise<T[]>;
+	request: Promise<T>;
 	abort: () => void;
 }
-function fetchFrom<T>(url: string, { methodName, query }: { methodName: string; query: string }): Fetch<T> {
+function fetchFrom<T>(url: string, options?: { method: "POST" | "GET"; body: BodyInit; methodName: string }): Fetch<T> {
 	const controller = new AbortController();
 	return {
 		request: fetch(url, {
-			method: "POST",
+			...options,
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ query: query }),
 			signal: controller.signal,
 		})
 			.then((response) => response.json())
-			.then((data) => data.data[methodName]),
+			.then((data) => (options?.methodName ? data.data[options?.methodName] : data)),
 		abort: () => {
 			controller.abort();
 		},

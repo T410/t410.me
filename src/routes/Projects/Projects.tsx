@@ -28,10 +28,11 @@ const projectType: Query = {
 const Projects = () => {
 	const [projects, setProjects] = useState<IProject[]>([]);
 	useEffect(() => {
-		const { request, abort } = fetchFrom<IProject>(
-			"https://api.t410.me/.netlify/functions/graphql",
-			queryBuilder(projectType)
-		);
+		const { request, abort } = fetchFrom<IProject[]>("https://api.t410.me/.netlify/functions/graphql", {
+			method: "POST",
+			body: JSON.stringify({ query: queryBuilder(projectType).query }),
+			methodName: "projects",
+		});
 		request
 			.then((response) => {
 				setProjects(response);

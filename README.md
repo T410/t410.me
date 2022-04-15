@@ -1,6 +1,10 @@
-# [t410.me](https://t410.me) (My Personal Blog)
+# Personal Blog & Showcase Site
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/db82cac7-6277-498c-b00c-3da8e58dbb26/deploy-status)](https://app.netlify.com/sites/t410/deploys)
+A simple site that I try to showcase my projects and my "articles" that I wrote.
+
+### Live Here
+
+[![t410.me demo](https://img.shields.io/badge/-t410.me-green?style=for-the-badge&link=https://t410.me/)](https://t410.me/){:target="\_blank"}
 
 ## Disclaimer
 

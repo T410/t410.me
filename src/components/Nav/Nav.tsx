@@ -17,7 +17,9 @@ const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<
 		<Link to={`/${menuType}`}>
 			<div
 				onClick={handleClick}
-				className="underline underline-offset-2 decoration-4 decoration-dotted decoration-orange-600 hover:decoration-solid"
+				className={`underline underline-offset-2 decoration-4 decoration-orange-600 hover:decoration-solid ${
+					menu === menuType ? "decoration-solid" : "decoration-dotted"
+				}`}
 			>
 				<h3>{name || Menu[menuType]}</h3>
 			</div>

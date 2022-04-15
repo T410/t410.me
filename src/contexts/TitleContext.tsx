@@ -1,34 +1,61 @@
 import { createContext, useState, FC, useEffect } from "react";
+import { matchPath } from "react-router-dom";
+import { removeDash, upperFirst, forEachWord } from "utils/stringParser";
 
-interface TitleContextState {
-	title: string;
-	setTitle: (title: string) => void;
+const INITIAL_TITLE = "Tayyib Cankat";
+
+declare global {
+	interface Window {
+		gtag?: (key: string, trackingId: string, page_path?: string) => void;
+	}
 }
 
-const contextDefaultValues: TitleContextState = {
-	title: "Tayyib Cankat",
-	setTitle: () => {},
+interface LocationContextState {
+	pathname: string;
+	setPath: (pathname: string) => void;
+}
+
+const contextDefaultValues: LocationContextState = {
+	pathname: "/",
+	setPath: () => {},
 };
 
-export const TitleContext = createContext<TitleContextState>(contextDefaultValues);
+export const LocationContext = createContext<LocationContextState>(contextDefaultValues);
 
-const TitleProvider: FC = ({ children }) => {
-	const [title, _setTitle] = useState<string>("");
+const setTitle = (title: string) => {
+	document.title = title + " | " + INITIAL_TITLE;
+};
+
+const LocationProvider: FC = ({ children }) => {
+	const [pathname, setPathname] = useState<string>(contextDefaultValues.pathname);
 
 	useEffect(() => {
-		document.title = title;
-	}, [title]);
+		const match = matchPath("/articles/:id/:slug", pathname);
+		let title = "";
+
+		if (match) {
+			title = forEachWord(removeDash(match.params.slug || ""))(upperFirst);
+		} else if (pathname !== "/") {
+			title = forEachWord(removeDash(pathname.split("/")[1]))(upperFirst);
+		}
+
+		setTitle(title);
+		if (window.gtag) {
+			window.gtag("set", "page_path", "debug" + pathname);
+			window.gtag("event", "page_view");
+		}
+	}, [pathname]);
 
 	return (
-		<TitleContext.Provider
+		<LocationContext.Provider
 			value={{
-				title,
-				setTitle: (title: string) => _setTitle(title + " | " + contextDefaultValues.title),
+				pathname,
+				setPath: setPathname,
 			}}
 		>
 			{children}
-		</TitleContext.Provider>
+		</LocationContext.Provider>
 	);
 };
 
-export default TitleProvider;
+export default LocationProvider;

@@ -1,9 +1,8 @@
-import { Routes, Route, Outlet, useLocation, useMatch } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { Nav } from "components";
 import { Articles, Article, Projects, Me } from "routes";
 import { useContext, useEffect } from "react";
-import { TitleContext } from "contexts";
-import { removeDash, upperFirst, forEachWord } from "utils/stringParser";
+import { LocationContext } from "contexts";
 
 function WithMain({ className }: { className?: string }) {
 	return (
@@ -18,19 +17,12 @@ function WithMain({ className }: { className?: string }) {
 }
 
 function App() {
-	const { setTitle } = useContext(TitleContext);
+	const { setPath } = useContext(LocationContext);
 	const location = useLocation();
-	const slugMatch = useMatch("/articles/:id/:slug/");
 
 	useEffect(() => {
-		let title = "";
-		if (slugMatch) {
-			title = upperFirst(removeDash(slugMatch.params.slug || ""));
-		} else if (location.pathname) {
-			title = forEachWord(removeDash(location.pathname.split("/")[1]))(upperFirst);
-		}
-		setTitle(title);
-	}, [location.pathname, setTitle, slugMatch]);
+		setPath(location.pathname);
+	}, [location.pathname, setPath]);
 	return (
 		<>
 			<Nav />

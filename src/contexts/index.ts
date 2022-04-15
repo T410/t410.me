@@ -1,1 +1,1 @@
-export { TitleContext, default } from "contexts/TitleContext";
+export { LocationContext, default } from "contexts/TitleContext";

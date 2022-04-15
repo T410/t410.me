@@ -9,11 +9,19 @@ export type MenuContextState = {
 	setMenu: (menu: Menu) => void;
 };
 
-export interface Article {
+export interface ArticleListing {
 	id: number;
 	title: string;
 	content: string;
 	canonical_url: string;
-	tag_list: string[];
+	tag_list: string;
 	slug: string;
+}
+
+export interface Article {
+	id: number;
+	title: string;
+	description: string;
+	body_markdown: string;
+	tag_list: string;
 }

@@ -25,3 +25,11 @@ export interface Article {
 	body_markdown: string;
 	tag_list: string;
 }
+
+export interface Project {
+	_id: string;
+	title: string;
+	description: string;
+	demo?: string;
+	source?: string;
+}

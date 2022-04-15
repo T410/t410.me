@@ -2,7 +2,7 @@ import { Nav, Main } from "components";
 function App() {
 	return (
 		<>
-			<div className="h-full flex flex-col">
+			<div className="min-h-fit h-full flex flex-col">
 				<Nav />
 				<Main />
 			</div>

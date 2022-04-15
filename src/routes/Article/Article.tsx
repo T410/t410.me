@@ -23,9 +23,9 @@ const Article: FC<{ article?: IArticle }> = ({ article }) => {
 	}, [params.id]);
 
 	return (
-		<div className="text-white">
+		<div className="text-white h-full">
 			{articleData && (
-				<div>
+				<div className="overflow-y-scroll h-full">
 					<h1>{articleData.title}</h1>
 					<ReactMarkdown className="markdown" remarkPlugins={[remarkGfm]}>
 						{articleData?.body_markdown}

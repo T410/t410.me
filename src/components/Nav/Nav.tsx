@@ -43,7 +43,7 @@ const Nav = () => {
 	}
 
 	return (
-		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-navy-900 text-white sm:flex-row sm:space-y-0">
+		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-navy-900 text-white sm:flex-row sm:space-y-0 flex-shrink-0">
 			<div className="flex flex-col justify-center items-center sm:hidden">
 				<button className="flex items-center border px-2 py-1 rounded border-navy-100" onClick={collapseButtonHandler}>
 					<img src={hamburger} alt="menu" className="w-4 h-4" />

@@ -1,7 +1,7 @@
 import { devto, github, linkedin } from "assets";
 const Me = () => {
 	return (
-		<div className="h-full flex flex-col justify-center items-center space-y-8 rounded bg-navy-700 py-8 px-2 text-white">
+		<div className="h-full flex flex-1 flex-col justify-around items-center space-y-8 rounded bg-navy-700 py-8 px-2 text-white">
 			<div className="flex flex-row items-center justify-center mx-8">
 				<img
 					src="https://avatars.githubusercontent.com/u/8334449?v=4"

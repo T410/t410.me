@@ -1,2 +1,13 @@
 .outerContainer {
 }
+
+.articles {
+}
+
+.articles > *:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+.article {
+	padding: 1rem;
+}

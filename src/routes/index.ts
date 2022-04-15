@@ -1,4 +1,4 @@
 import Articles from "./Articles/Articles";
 import Me from "./Me/Me";
-
-export { Articles, Me };
+import Projects from "./Projects/Projects";
+export { Articles, Me, Projects };

@@ -14,32 +14,28 @@ const NavButton: FC<{ menuType: Menu; name?: string; menuState: [Menu, Dispatch<
 	};
 
 	return (
-		<div className={styles.navButton} onClick={handleClick}>
-			<h3 className={`${styles.notSelected} ${menu === menuType ? styles.selected : ""}`}>{name || Menu[menuType]}</h3>
-		</div>
+		<Link to={`/${menuType}`}>
+			<div className={styles.navButton} onClick={handleClick}>
+				<h3 className={`${styles.notSelected} ${menu === menuType ? styles.selected : ""}`}>
+					{name || Menu[menuType]}
+				</h3>
+			</div>
+		</Link>
 	);
 };
 
 const Nav = () => {
-	const menuState = useState<Menu>(Menu.AboutMe);
+	const menuState = useState<Menu>(Menu["About Me"]);
 	return (
 		<div className={styles.outerContainer}>
 			<div className={styles.middleContainer}>
 				<div className={styles.navSection}>
-					<NavButton menuType={Menu.Projects} menuState={menuState}>
-						<Link to="/projects" />
-					</NavButton>
-					<NavButton menuType={Menu.Articles} menuState={menuState}>
-						<Link to="/articles" />
-					</NavButton>
-					<NavButton menuType={Menu.AboutMe} menuState={menuState}>
-						<Link to="/about-me" />
-					</NavButton>
+					<NavButton menuType={Menu.Projects} menuState={menuState} />
+					<NavButton menuType={Menu.Articles} menuState={menuState} />
+					<NavButton menuType={Menu["About Me"]} menuState={menuState} />
 				</div>
 				<div className={styles.logoContainer}>
-					<NavButton menuType={Menu.AboutMe} name="Tayyib Cankat" menuState={menuState}>
-						<Link to="/about-me" />
-					</NavButton>
+					<NavButton menuType={Menu["About Me"]} name="Tayyib Cankat" menuState={menuState} />
 				</div>
 			</div>
 		</div>

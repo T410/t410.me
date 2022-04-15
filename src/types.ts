@@ -1,7 +1,7 @@
 export enum Menu {
-	Projects,
-	Articles,
-	AboutMe,
+	Projects = "projects" as any,
+	Articles = "articles" as any,
+	"About Me" = "about-me" as any,
 }
 
 export type MenuContextState = {

@@ -41,7 +41,7 @@ const Projects = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.outerContainer}>
 			<h1>Projects</h1>
 			{loading ? (
 				<div className={styles.loadingContainer}>

@@ -45,15 +45,15 @@ const Projects = () => {
 					<img className="animate-spin w-20 h-20" src={spinner} alt="Loading Spinner"></img>
 				</div>
 			) : (
-				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+				<div className="grid grid-cols-1 auto-rows-fr gap-8 sm:grid-cols-2 xl:grid-cols-3">
 					{projects.map((project) => (
 						<div
 							key={project._id}
-							className="rounded bg-primary-500 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-2 transition-all drop-shadow-sm hover:drop-shadow-xl"
+							className="rounded bg-navy-600 text-white p-2 min-h-fit h-full flex flex-col justify-between space-y-4 transition-all drop-shadow-sm hover:drop-shadow-xl"
 						>
-							<h2 className="text-xl flex-1">{project.title}</h2>
+							<h2 className="text-2xl flex-1">{project.title}</h2>
 							<p className="text-sm">{project.description}</p>
-							<div className="border-b-2 rounded border-green-500" />
+							<div className="border-b-4 rounded border-navy-100" />
 							<div className="flex flex-row justify-between">
 								<a href={project.demo} target="_blank" rel="noreferrer">
 									<img src="https://img.shields.io/badge/-Demo-rgb(34%20197%2094)?style=for-the-badge" alt="Demo" />

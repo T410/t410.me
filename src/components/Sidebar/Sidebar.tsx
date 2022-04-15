@@ -1,15 +1,11 @@
-import styles from "./Sidebar.module.css";
-import { Card } from "components";
 const Item = () => {
-	return <div className={styles.item}>Item</div>;
+	return <div className="w-11/12 h-fit my-2 mx-auto p-2 text-sm rounded bg-orange-600 text-white">Item</div>;
 };
 
 const Sidebar = () => {
 	return (
-		<div className={styles.outerContainer}>
-			<Card>
-				<Item />
-			</Card>
+		<div className="h-full hidden bg-slate-700 rounded sm:grid">
+			<Item />
 		</div>
 	);
 };

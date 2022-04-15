@@ -1,16 +1,12 @@
 import { Outlet } from "react-router-dom";
-
-import styles from "./Main.module.css";
 import { Sidebar } from "components";
 
 const Main = () => {
 	return (
-		<div className={styles.outerContainer}>
+		<div className="h-full grid sm:grid-cols-layout gap-2 bg-slate-800">
 			<Sidebar />
-			<div className={styles.contentContainer}>
-				<div className={styles.innerContentContainer}>
-					<Outlet />
-				</div>
+			<div className="h-full p-5 rounded bg-white">
+				<Outlet />
 			</div>
 		</div>
 	);

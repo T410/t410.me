@@ -2,8 +2,10 @@ import { Nav, Main } from "components";
 function App() {
 	return (
 		<>
-			<Nav />
-			<Main />
+			<div className="h-full flex flex-col">
+				<Nav />
+				<Main />
+			</div>
 		</>
 	);
 }

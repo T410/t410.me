@@ -2,15 +2,11 @@ module.exports = {
 	content: ["./src/**/*.{ts,tsx}"],
 	theme: {
 		extend: {
+			gridTemplateColumns: {
+				layout: "10rem auto",
+			},
 			gridTemplateRows: {
-				"auto-1": "auto 1fr",
-				custom: "1fr 1fr 2fr",
-			},
-			fontSize: {
-				xxs: ".5rem",
-			},
-			border: {
-				1: "1px solid",
+				layout: "1fr 12fr 1fr",
 			},
 		},
 	},

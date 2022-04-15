@@ -43,7 +43,7 @@ const Nav = () => {
 	}
 
 	return (
-		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 md:flex-row md:space-y-0">
+		<div className="w-full p-4 flex flex-col justify-between flex-wrap items-start space-y-4 bg-slate-900 text-white md:flex-row md:space-y-0">
 			<div className="flex flex-col justify-center items-center md:hidden">
 				<button className="flex items-center border px-2 py-1 rounded" onClick={collapseButtonHandler}>
 					<img

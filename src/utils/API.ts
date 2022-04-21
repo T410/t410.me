@@ -1,4 +1,4 @@
-interface Fetch<T> {
+export interface Fetch<T> {
 	request: Promise<T>;
 	abort: () => void;
 }

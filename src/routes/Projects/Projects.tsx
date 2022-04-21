@@ -1,38 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Project as IProject } from "types";
 import { Loading } from "components";
-import { fetchFrom, queryBuilder } from "utils/API";
-import type { Query } from "utils/API";
-
-const projectType: Query = {
-	method: "projects",
-	parameters: [
-		{
-			name: "_id",
-		},
-		{
-			name: "title",
-		},
-		{
-			name: "description",
-		},
-		{
-			name: "demo",
-		},
-		{
-			name: "source",
-		},
-	],
-};
+import { APIContext } from "contexts/APIContext";
 
 const Projects = () => {
 	const [projects, setProjects] = useState<IProject[]>([]);
+	const { getProjects } = useContext(APIContext);
+
 	useEffect(() => {
-		const { request, abort } = fetchFrom<IProject[]>("https://api.t410.me/.netlify/functions/graphql", {
-			method: "POST",
-			body: JSON.stringify({ query: queryBuilder(projectType).query }),
-			methodName: "projects",
-		});
+		const { request, abort } = getProjects();
 		request
 			.then((response) => {
 				setProjects(response);
@@ -40,7 +16,7 @@ const Projects = () => {
 			.catch(() => {});
 
 		return abort;
-	}, []);
+	}, [getProjects]);
 
 	return (
 		<>

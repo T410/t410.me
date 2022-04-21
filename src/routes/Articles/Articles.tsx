@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ArticleListing } from "types";
 import { Link } from "react-router-dom";
 import { Loading } from "components";
-import { fetchFrom } from "utils/API";
 import { removeLastDashAndWord } from "utils/stringParser";
+import { APIContext } from "contexts/APIContext";
 
 const Articles = () => {
 	const [articles, setArticles] = useState<ArticleListing[] | []>([]);
+	const { getArticles } = useContext(APIContext);
+
 	useEffect(() => {
 		if (articles.length === 0) {
-			const { request, abort } = fetchFrom<ArticleListing[]>("https://dev.to/api/articles?username=t410");
+			const { request, abort } = getArticles();
 
 			request
 				.then((data) => {
@@ -19,7 +21,7 @@ const Articles = () => {
 
 			return abort;
 		}
-	}, [articles.length]);
+	}, [articles.length, getArticles]);
 
 	return (
 		<div className="grid grid-cols-1 auto-rows-fr gap-2">

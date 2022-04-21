@@ -1,3 +1,4 @@
+import { Fetch } from "utils/API";
 export enum Menu {
 	Projects = "projects" as any,
 	Articles = "articles" as any,
@@ -9,6 +10,12 @@ export type MenuContextState = {
 	menu: Menu;
 	setMenu: (menu: Menu) => void;
 };
+
+export interface APIContextState {
+	getArticle: (id: string) => Fetch<Article>;
+	getArticles: () => Fetch<ArticleListing[]>;
+	getProjects: () => Fetch<Project[]>;
+}
 
 export interface ArticleListing {
 	id: number;

@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article as IArticle } from "types";
 import Markdown from "./Markdown";
 import { Loading } from "components";
-import { fetchFrom } from "utils/API";
+import { APIContext } from "contexts/APIContext";
 
 export default function Article() {
 	const params = useParams<{ id: string }>();
 	const [articleData, setArticleData] = useState<IArticle>();
 
+	const { getArticle } = useContext(APIContext);
+
 	useEffect(() => {
 		if (params.id) {
-			const { request, abort } = fetchFrom<IArticle>(`https://dev.to/api/articles/${params.id}`);
+			const { request, abort } = getArticle!(params.id);
 			request
 				.then((data) => {
 					setArticleData(data);
@@ -20,11 +22,11 @@ export default function Article() {
 
 			return abort;
 		}
-	}, [params.id]);
+	}, [getArticle, params.id]);
 
 	return (
 		<div className="card article-card break-words text-white h-full bg-neutral-900 p-3 sm:p-5 md:py-8 md:px-12 lg:px-16">
-			{articleData ? (
+			{articleData !== undefined ? (
 				<div className="h-full">
 					<div className="markdown">
 						<div className="card bg-black/80 mb-5">

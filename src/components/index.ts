@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+import Navbar from "./Navbar/Navbar";
 import Loading from "./Loading";
 
-export { Nav, Loading };
+export { Navbar, Loading };

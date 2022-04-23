@@ -56,34 +56,6 @@ module.exports = {
 					// backgroundColor: colors.neutral[900],
 					padding: theme("spacing.5"),
 				},
-				".header": {
-					position: "fixed",
-					top: 0,
-				},
-				".header-container": {
-					position: "relative",
-					padding: `0 ${theme("spacing.4")}`,
-					height: theme("spacing.14"),
-					display: "flex",
-					alignItems: "center",
-					margin: "auto",
-					maxWidth: vars.siteWidth,
-				},
-				".header-link": {
-					"&:hover": {
-						backgroundColor: theme("colors.indigo.900"),
-						textDecoration: "underline",
-						color: theme("colors.indigo.300"),
-					},
-					padding: `${theme("spacing.2")} ${theme("spacing.4")}`,
-					borderRadius: theme("borderRadius.lg"),
-					color: "white",
-				},
-				".header-link-selected": {
-					backgroundColor: theme("colors.indigo.900"),
-					color: theme("colors.indigo.300"),
-					textDecoration: "none !important",
-				},
 				".hamburger": {
 					zIndex: 200,
 					position: "fixed",
@@ -227,18 +199,9 @@ module.exports = {
 				"html, body": {
 					color: "white",
 				},
-				header: {
-					width: theme("width.full"),
-					height: theme("spacing.14"),
-					boxShadow: theme("boxShadow.2xl"),
-					backgroundColor: theme("colors.neutral.900"),
-				},
 				h2: {
 					fontWeight: theme("fontWeight.bold"),
 					fontSize: theme("fontSize.lg"),
-				},
-				a: {
-					color: theme("colors.indigo.400"),
 				},
 				ul: {
 					listStyleType: "disc",

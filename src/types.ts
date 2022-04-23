@@ -6,15 +6,20 @@ export enum Menu {
 	Undefined = "undefined" as any,
 }
 
-export type MenuContextState = {
+export interface MenuContextState {
 	menu: Menu;
 	setMenu: (menu: Menu) => void;
-};
+}
 
 export interface APIContextState {
 	getArticle: (id: string) => Fetch<Article>;
 	getArticles: () => Fetch<ArticleListing[]>;
 	getProjects: () => Fetch<Project[]>;
+}
+
+export interface DarkModeContextState {
+	darkMode: boolean;
+	setDarkMode: (darkMode: boolean) => void;
 }
 
 export interface ArticleListing {

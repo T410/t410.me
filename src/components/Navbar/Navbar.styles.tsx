@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Outer = styled.header`
 	width: 100%;
-	height: 56px;
+	height: 60px;
 	position: fixed;
 	top: 0;
 	background-color: ${({ theme }) => theme.colors.navbar};

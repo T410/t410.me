@@ -1,5 +1,5 @@
 import { DarkModeContext } from "contexts/DarkModeContext";
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 import Toggle from "react-toggle";
 import styled from "styled-components";
 import { darkMode as darkModeSVG, lightMode as lightModeSVG } from "assets";
@@ -14,9 +14,7 @@ const Icon: FC<IconProps> = ({ svg, alt }: { svg: string; alt: string }) => {
 
 const CustomToggle: FC = ({ ...props }) => {
 	const { darkMode, setDarkMode } = useContext(DarkModeContext);
-	useEffect(() => {
-		console.log(darkMode);
-	}, [darkMode]);
+
 	return (
 		<Toggle
 			checked={darkMode}

@@ -206,18 +206,6 @@ module.exports = {
 				ul: {
 					listStyleType: "disc",
 				},
-				main: {
-					display: "grid",
-					columnGap: theme("spacing.4"),
-					margin: "0 auto",
-					width: "100%",
-					maxWidth: "var(--site-width)",
-					gridTemplateColumns: "var(--layout)",
-					padding: theme("spacing.2"),
-					"@media (min-width: 1024px)": {
-						padding: theme("spacing.4"),
-					},
-				},
 			});
 		}),
 	],

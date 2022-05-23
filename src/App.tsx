@@ -1,28 +1,42 @@
 import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "components";
-import { Articles, Article, Projects, Me, Home } from "routes";
+import { Articles, Article, Projects, Home } from "routes";
 import { useContext, useEffect } from "react";
-import { LocationContext } from "contexts";
+import { LocationContext } from "contexts/TitleContext";
 import styled, { ThemeProvider } from "styled-components";
 import { colors, theme } from "theme";
-import GlobalStyle from "index.styles";
+// import GlobalStyle from "index.styles";
+import GlobalStyle from "./globalStyles";
+
 import { DarkModeContext } from "contexts/DarkModeContext";
 
 const Main = styled.main`
+	/* max-width: ${({ theme }) => theme.pageWidth}; */
+`;
+
+const ArticleView = styled.article`
+	padding: 2rem;
 	margin-top: 1rem;
+	max-width: ${({ theme }) => theme.pageWidth};
 	margin-left: auto;
 	margin-right: auto;
-	max-width: ${({ theme }) => theme.pageWidth};
-	padding: 2rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.S + "px"}) {
+		margin: 0;
+		padding: 0.5rem;
+	}
 `;
+
 function WithMain({ className }: { className?: string }) {
 	return (
 		<Main>
-			{/* <div className="sidebar-display"></div> */}
-			{/* <div className="main-content"> */}
-			<Outlet />
-			{/* </div> */}
-			{/* <div className="sidebar-display"></div> */}
+			<ArticleView>
+				{/* <div className="sidebar-display"></div> */}
+				{/* <div className="main-content"> */}
+				<Outlet />
+				{/* </div> */}
+				{/* <div className="sidebar-display"></div> */}
+			</ArticleView>
 		</Main>
 	);
 }
@@ -45,7 +59,7 @@ function App() {
 					<Route path="/" element={<WithMain />}>
 						<Route path="/" element={<Home />} />
 						<Route path="/projects" element={<Projects />} />
-						<Route path="/about-me" element={<Me />} />
+						<Route path="/about-me" element={<Home />} />
 						<Route path="/articles" element={<Articles />} />
 					</Route>
 					<Route element={<WithMain className="article-main" />}>

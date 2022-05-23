@@ -9,7 +9,7 @@ const pulse = keyframes`
 const Wrapper = styled.div`
 	width: 100%;
 	background-color: ${({ theme }) => theme.colors.background};
-	border-radius: 0.5rem;
+	border-radius: ${({ theme }) => theme.borderRadius};
 	border-width: 1px;
 	border-color: rgba(150, 189, 231, 0.25);
 `;

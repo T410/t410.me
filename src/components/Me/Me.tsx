@@ -7,16 +7,22 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
 	margin: 0;
+	margin-bottom: 0.75rem;
+	font-size: 3rem;
+`;
+
+const Bio = styled.p`
+	margin: 0;
 `;
 
 const Details = styled.div`
 	& > p > a {
 		text-decoration: underline;
 	}
-	flex: 8;
+	/* flex: 8;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-between; */
 `;
 
 const Image = styled.img`
@@ -51,4 +57,4 @@ const LinkWrapper = styled.div`
 	width: 50%;
 `;
 
-export { Wrapper, Details, Image, LinkImage, Title, LinkWrapper };
+export { Wrapper, Details, Image, LinkImage, Title, LinkWrapper, Bio };

@@ -22,6 +22,18 @@ export interface DarkModeContextState {
 	setDarkMode: (darkMode: boolean) => void;
 }
 
+export enum ScreenSize {
+	XS = 0 as number,
+	S = 576 as number,
+	M = 768 as number,
+	L = 992 as number,
+	XL = 1200 as number,
+}
+export interface ScreenSizeContextState {
+	screenSize: ScreenSize;
+	setScreenSize: (screenSize: ScreenSize) => void;
+}
+
 export interface ArticleListing {
 	id: number;
 	title: string;

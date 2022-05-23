@@ -10,6 +10,7 @@ body {
 	scroll-behavior: smooth;
 	padding-top: 60px;
     font-size: 1.2rem;
+	background-color: ${({ theme }) => theme.colors.background};
 }
 
 p {

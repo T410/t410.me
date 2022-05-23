@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Outer = styled.header`
 	width: 100%;
-	height: 60px;
+	min-height: fit-content;
 	position: fixed;
 	top: 0;
 	background-color: ${({ theme }) => theme.colors.navbar};
@@ -15,13 +15,21 @@ const Middle = styled.div`
 	align-items: center;
 	margin: auto;
 	height: 100%;
-	padding: 0.5rem 1.5rem;
 	max-width: ${({ theme }) => theme.pageWidth};
+	padding: 0.5rem 1.5rem;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.S + "px"}) {
+		padding: 0.5rem;
+	}
 `;
 
 const Section = styled.div`
 	display: flex;
 	align-items: center;
+
+	& > :nth-child(n + 2) {
+		margin-left: 1rem;
+	}
 `;
 
 const Nav: FC = ({ children }) => (

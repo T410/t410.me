@@ -27,8 +27,12 @@ const Projects = () => {
 						<Card title={project.title} key={project._id}>
 							<CardSection>
 								<RowFlex>
-									<Button>Demo</Button>
-									<Button>Source</Button>
+									<Button href={project.demo} target="_blank">
+										Demo
+									</Button>
+									<Button href={project.source} target="_blank">
+										Source
+									</Button>
 								</RowFlex>
 							</CardSection>
 							<CardSection>

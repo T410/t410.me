@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Menu, ScreenSize } from "types";
 import { Nav, Section } from "./Navbar.styles";
@@ -6,7 +6,7 @@ import { DarkModeToggle } from "elements";
 import { NavbarLink } from "elements";
 import { Screen } from "components/Media";
 
-function NavItems({ menuState, onClick }: { menuState: [Menu, Dispatch<SetStateAction<Menu>>]; onClick?: () => void }) {
+function NavItems() {
 	return (
 		<>
 			<NavbarLink to={"/projects"}>Projects</NavbarLink>
@@ -17,7 +17,6 @@ function NavItems({ menuState, onClick }: { menuState: [Menu, Dispatch<SetStateA
 }
 
 const Navbar = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuState = useState<Menu>(Menu.Undefined);
 	const location = useLocation();
 
@@ -30,10 +29,6 @@ const Navbar = () => {
 		}
 	}, [location.pathname, menuState]);
 
-	function toggleMenu() {
-		setIsMenuOpen(!isMenuOpen);
-	}
-
 	return (
 		<>
 			<Nav>
@@ -43,7 +38,7 @@ const Navbar = () => {
 					</Section>
 				</Screen>
 				<Section>
-					<NavItems menuState={menuState} />
+					<NavItems />
 				</Section>
 				<Section>
 					<DarkModeToggle />

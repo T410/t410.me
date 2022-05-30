@@ -12,10 +12,11 @@ const A = styled.a`
 
 const FancyA = styled.a`
 	text-decoration: none;
-	color: white;
+	color: ${({ theme }) => theme.colors.elements.a.font};
 	font-weight: 600;
 
 	border-bottom: 2px solid ${({ theme }) => theme.colors.accentColor};
+	word-break: break-all;
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.accentColor};
@@ -25,7 +26,7 @@ const FancyA = styled.a`
 
 const FancyLink = styled(Link)`
 	text-decoration: none;
-	color: white;
+	color: ${({ theme }) => theme.colors.elements.a.font};
 	font-weight: 600;
 
 	border-bottom: 2px solid ${({ theme }) => theme.colors.accentColor};
@@ -42,7 +43,7 @@ const StyledLink = styled(Link)<{ active?: boolean }>`
 	gap: 0.4rem;
 	border-radius: 8px;
 	padding: 0.5rem;
-	color: ${({ theme }) => theme.colors.fontColor};
+	color: ${({ theme }) => theme.colors.elements.a.font};
 
 	background-color: ${({ active, theme }) => (active ? theme.colors.navbarHover : theme.colors.navbar)};
 

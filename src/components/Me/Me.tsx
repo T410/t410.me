@@ -22,24 +22,7 @@ const Bio = styled.p`
 	color: ${({ theme }) => theme.colors.fontColor};
 `;
 
-const Details = styled.div`
-	& > p > a {
-		text-decoration: none;
-		color: white;
-		font-weight: 600;
-
-		border-bottom: 2px solid ${({ theme }) => theme.colors.accentColor};
-
-		&:hover {
-			background-color: ${({ theme }) => theme.colors.accentColor};
-			color: ${({ theme }) => theme.colors.background};
-		}
-	}
-	/* flex: 8;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between; */
-`;
+const Details = styled.div``;
 
 const Image = styled.img`
 	width: 250px;
@@ -56,18 +39,22 @@ const Image = styled.img`
 `;
 
 const LinkImage = styled.a`
-	flex: 1;
-	height: 100%;
-	max-width: fit-content;
 	align-items: center;
 	justify-content: center;
+	display: flex;
+	border-radius: 1rem;
 	margin-right: 1rem;
+	padding: 0.5rem;
 
 	& > img {
 		border-radius: 0;
 		margin-left: 0%;
 		width: 32px;
 		height: auto;
+	}
+
+	&:hover {
+		background: ${({ theme }) => theme.colors.accentColor + "AA"};
 	}
 `;
 

@@ -28,7 +28,7 @@ const Animator = styled.div`
 
 const Round = styled.div`
 	border-radius: 9999px;
-	background-color: ${({ theme }) => theme.colors.fontColor};
+	background-color: ${({ theme }) => theme.colors.accentColor};
 	height: 3rem;
 	width: 3rem;
 `;
@@ -69,7 +69,8 @@ const Line = styled.div<LineProps>`
 	width: ${(props) => (100 / 12) * (props.colSpan || 12)}%;
 	height: ${(props) => props.rowSpan || 0.5}rem;
 	border-radius: 0.25rem;
-	background-color: ${({ theme }) => theme.colors.fontColor};
+	background-color: ${({ theme }) =>
+		Math.round(Math.random()) >= 0.5 ? theme.colors.lightBorderColor : theme.colors.accentColor};
 `;
 
 export default function Loading() {

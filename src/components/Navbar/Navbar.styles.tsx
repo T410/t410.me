@@ -7,6 +7,7 @@ const Outer = styled.header`
 	position: fixed;
 	top: 0;
 	background-color: ${({ theme }) => theme.colors.navbar};
+	border-bottom: 1px solid ${({ theme }) => theme.colors.lightBorderColor};
 `;
 
 const Middle = styled.div`

@@ -12,7 +12,7 @@ const CardOuter = styled.div`
 `;
 
 const StyledCardTitle = styled.h1`
-	color: ${({ theme }) => theme.colors.accentColor};
+	color: ${({ theme }) => theme.colors.elements.h};
 	margin-top: 0;
 `;
 

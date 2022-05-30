@@ -23,7 +23,7 @@ const colors: { dark: Colors; light: Colors } = {
 		navbarHover: "#272a33",
 
 		background: "#282C34",
-		codeBackground: "#373c47",
+		preBackground: "#373c47",
 
 		fontColor: "#d0d5df",
 		brightFontColor: "#eee",
@@ -34,23 +34,45 @@ const colors: { dark: Colors; light: Colors } = {
 		accentColor: "#fdb54a",
 
 		darkOpacity: "rgba(0,0,0,0.2)",
+		elements: {
+			h: "#fdb54a",
+			code: {
+				font: "#d0d5d",
+				background: "#393e4b",
+			},
+			a: {
+				font: "#fff",
+				underline: "#fdb54a",
+			},
+		},
 	},
 	light: {
-		navbar: "#d3d3d3",
-		navbarHover: "#272a33",
+		navbar: "#f0f0f0",
+		navbarHover: "#dddddd",
 
 		background: "#f5f5f5",
-		codeBackground: "#373c47",
+		preBackground: "#373c47",
 
-		fontColor: "#d0d5df",
-		brightFontColor: "#eee",
+		fontColor: "#343434",
+		brightFontColor: "#222",
 
-		darkBorderColor: "#111",
-		lightBorderColor: "#111",
+		darkBorderColor: "#bbb",
+		lightBorderColor: "#e0e0e0",
 
 		accentColor: "#fdb54a",
 
-		darkOpacity: "rgba(0,0,0,0.2)",
+		darkOpacity: "rgba(0,0,0,0.03)",
+		elements: {
+			h: "#222",
+			code: {
+				font: "#111",
+				background: "rgba(0,0,0,0.05)",
+			},
+			a: {
+				font: "#111",
+				underline: "",
+			},
+		},
 	},
 };
 

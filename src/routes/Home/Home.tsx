@@ -1,6 +1,26 @@
-import { devto, github, linkedin } from "assets";
+import { devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
 import { Wrapper, Details, Image, LinkImage, Title, LinkWrapper, Bio } from "components/Me";
+import { DarkModeContext } from "contexts/DarkModeContext";
 import { FancyLink } from "elements";
+import { useContext } from "react";
+const Socials = () => {
+	const { darkMode } = useContext(DarkModeContext);
+
+	return (
+		<LinkWrapper>
+			<LinkImage href="https://github.com/T410">
+				<Image src={darkMode ? github : github_black} alt="github link" />
+			</LinkImage>
+			<LinkImage href="https://dev.to/T410">
+				<Image src={darkMode ? devto : devto_black} alt="devto link" />
+			</LinkImage>
+			<LinkImage href="https://linkedin.com/in/MT410">
+				<Image src={darkMode ? linkedin : linkedin_black} alt="Linkedin link" />
+			</LinkImage>
+		</LinkWrapper>
+	);
+};
+
 const Home = () => {
 	return (
 		<Wrapper>
@@ -11,17 +31,7 @@ const Home = () => {
 					and try to find time for <FancyLink to="/articles">writing</FancyLink> about what I learn. Well, this website
 					is one of my projects to try and show the things I learn.
 				</Bio>
-				<LinkWrapper>
-					<LinkImage href="https://github.com/T410">
-						<Image src={github} alt="github link" />
-					</LinkImage>
-					<LinkImage href="https://dev.to/T410">
-						<Image src={devto} alt="devto link" />
-					</LinkImage>
-					<LinkImage href="https://linkedin.com/in/MT410">
-						<Image src={linkedin} alt="Linkedin link" />
-					</LinkImage>
-				</LinkWrapper>
+				<Socials />
 			</Details>
 			<Image src="https://avatars.githubusercontent.com/u/8334449?v=4" alt="Tayyib" />
 		</Wrapper>

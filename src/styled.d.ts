@@ -18,7 +18,7 @@ declare module "styled-components" {
 		navbarHover: string;
 
 		background: string;
-		codeBackground: string;
+		preBackground: string;
 
 		fontColor: string;
 		brightFontColor: string;
@@ -29,5 +29,25 @@ declare module "styled-components" {
 		accentColor: string;
 
 		darkOpacity: string;
+
+		elements: {
+			h: string;
+			h1?: string;
+			h2?: string;
+			h3?: string;
+			h4?: string;
+			h5?: string;
+			h6?: string;
+
+			code: {
+				background: string;
+				font: string;
+			};
+
+			a: {
+				font: string;
+				underline: string;
+			};
+		};
 	}
 }

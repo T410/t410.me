@@ -5,7 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import styled, { ThemeContext } from "styled-components";
 import { FancyA, Title, UnderlinedTitle } from "elements";
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 
 function parseGist(str: string) {
 	const regex = /{% gist ([^%]+) %}/g;

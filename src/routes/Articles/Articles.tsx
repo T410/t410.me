@@ -75,9 +75,7 @@ const Articles = () => {
 
 			request
 				.then((data) => {
-					console.log(data);
 					setArticles(splitByYear(data));
-					console.log(splitByYear(data));
 					setIsLoading(false);
 				})
 				.catch(() => {});
@@ -92,7 +90,6 @@ const Articles = () => {
 				yearArticles.map(([year, ...articles], i) => (
 					<div key={i}>
 						<UnderlinedTitle>{year}</UnderlinedTitle>
-						{/* <Hr /> */}
 						{articles.map(({ id, title, slug, published_at }) => (
 							<ArticleRow to={`/articles/${id}/${removeLastDashAndWord(slug)}`} key={id}>
 								<Article>{title}</Article>

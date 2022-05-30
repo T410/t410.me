@@ -1,6 +1,7 @@
-import Articles from "routes/Articles/Articles";
-import Article from "routes/Articles/Article";
 import Me from "routes/Me/Me";
+import Home from "./Home/Home";
+import Article from "routes/Articles/Article";
+import Articles from "routes/Articles/Articles";
 import Projects from "routes/Projects/Projects";
 
-export { Articles, Article, Me, Projects };
+export { Me, Home, Article, Articles, Projects };

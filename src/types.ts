@@ -6,15 +6,32 @@ export enum Menu {
 	Undefined = "undefined" as any,
 }
 
-export type MenuContextState = {
+export interface MenuContextState {
 	menu: Menu;
 	setMenu: (menu: Menu) => void;
-};
+}
 
 export interface APIContextState {
 	getArticle: (id: string) => Fetch<Article>;
 	getArticles: () => Fetch<ArticleListing[]>;
 	getProjects: () => Fetch<Project[]>;
+}
+
+export interface DarkModeContextState {
+	darkMode: boolean;
+	setDarkMode: (darkMode: boolean) => void;
+}
+
+export enum ScreenSize {
+	XS = 0 as number,
+	S = 576 as number,
+	M = 768 as number,
+	L = 992 as number,
+	XL = 1200 as number,
+}
+export interface ScreenSizeContextState {
+	screenSize: ScreenSize;
+	setScreenSize: (screenSize: ScreenSize) => void;
 }
 
 export interface ArticleListing {
@@ -24,6 +41,7 @@ export interface ArticleListing {
 	canonical_url: string;
 	tag_list: string;
 	slug: string;
+	published_at: string;
 }
 
 export interface Article {

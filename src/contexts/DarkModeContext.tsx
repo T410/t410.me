@@ -1,4 +1,5 @@
-import { createContext, FC, useState } from "react";
+import { usePersist } from "hooks";
+import { createContext, FC, useEffect, useState } from "react";
 import { DarkModeContextState } from "types";
 
 const contextDefaultValues: DarkModeContextState = {
@@ -9,7 +10,12 @@ const contextDefaultValues: DarkModeContextState = {
 export const DarkModeContext = createContext<DarkModeContextState>(contextDefaultValues);
 
 const DarkModeProvider: FC = ({ children }) => {
-	const [darkMode, setDarkMode] = useState<boolean>(contextDefaultValues.darkMode);
+	const persistedDarkMode = usePersist<boolean>({ stateName: "darkMode", initialValue: contextDefaultValues.darkMode });
+	const [darkMode, setDarkMode] = useState<boolean>(persistedDarkMode.getState());
+
+	useEffect(() => {
+		persistedDarkMode.setState(darkMode);
+	}, [darkMode, persistedDarkMode]);
 
 	return (
 		<DarkModeContext.Provider

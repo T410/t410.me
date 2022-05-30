@@ -85,7 +85,6 @@ export default function Markdown({ markdown }: { markdown: string }) {
 			components={{
 				p: (props: any) => <P {...props} />,
 				h2: (props: ReactMarkdownProps) => {
-					console.log(props);
 					return <UnderlinedTitle {...props} fontSize="1.5rem" />;
 				},
 				h3: (props: any) => <Title {...props} fontSize="1.3rem" />,

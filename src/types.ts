@@ -41,6 +41,7 @@ export interface ArticleListing {
 	canonical_url: string;
 	tag_list: string;
 	slug: string;
+	published_at: string;
 }
 
 export interface Article {

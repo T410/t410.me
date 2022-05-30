@@ -11,19 +11,18 @@ import GlobalStyle from "./globalStyles";
 import { DarkModeContext } from "contexts/DarkModeContext";
 
 const Main = styled.main`
-	/* max-width: ${({ theme }) => theme.pageWidth}; */
+	margin-top: 60px;
 `;
 
 const ArticleView = styled.article`
-	padding: 2rem;
-	margin-top: 1rem;
+	padding: 2rem 2rem;
 	max-width: ${({ theme }) => theme.pageWidth};
 	margin-left: auto;
 	margin-right: auto;
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.S + "px"}) {
 		margin: 0;
-		padding: 0.5rem;
+		padding: 2rem 1rem;
 	}
 `;
 

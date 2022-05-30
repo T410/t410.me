@@ -11,7 +11,7 @@ function NavItems({ menuState, onClick }: { menuState: [Menu, Dispatch<SetStateA
 		<>
 			<NavbarLink to={"/projects"}>Projects</NavbarLink>
 			<NavbarLink to={"/articles"}>Articles</NavbarLink>
-			<NavbarLink to={"/about-me"}>About Me</NavbarLink>
+			<NavbarLink to={"/about-me"}>Me</NavbarLink>
 		</>
 	);
 }

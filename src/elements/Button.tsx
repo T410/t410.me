@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import A from "./A";
+import { A } from "./A";
 
 const Button = styled(A)`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -9,6 +9,7 @@ const Button = styled(A)`
 	font-weight: 600;
 	line-height: normal;
 	padding: 0.4rem 0.6rem;
+	color: ${({ theme }) => theme.colors.brightFontColor};
 
 	&:hover {
 		text-decoration: none;

@@ -23,6 +23,7 @@ interface CardTitleProps {
 const CardTitle: FC<CardTitleProps> = ({ title }) => <StyledCardTitle>{title || "Title"}</StyledCardTitle>;
 
 const StyleCardSection = styled.div`
+	color: ${({ theme }) => theme.colors.fontColor};
 	margin-bottom: 1rem;
 	& > * {
 		margin: 0;

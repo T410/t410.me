@@ -8,7 +8,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
-	padding-top: 60px;
     font-size: 1.2rem;
 	background-color: ${({ theme }) => theme.colors.background};
 }
@@ -27,8 +26,13 @@ img {
 }
 
 * {
-    color:white;
 	box-sizing: border-box;
+	line-height: 1.65;
+}
+
+::selection{
+	background: ${({ theme }) => theme.colors.accentColor};
+	color: ${({ theme }) => theme.colors.background};
 }
 `;
 

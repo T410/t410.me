@@ -1,14 +1,15 @@
 import { devto, github, linkedin } from "assets";
 import { Wrapper, Details, Image, LinkImage, Title, LinkWrapper, Bio } from "components/Me";
+import { FancyLink } from "elements";
 const Home = () => {
 	return (
 		<Wrapper>
 			<Details>
-				<Title>Hey I'm Tayyib.</Title>
+				<Title>Hey, I'm Tayyib.</Title>
 				<Bio>
-					I'm a software engineer in Turkey. I love learning and building <a href="/projects">projects</a> and try to
-					find time for <a href="/articles">writing</a> about what I learn. Well, this website is one of my projects to
-					try and show the things I learn.
+					I'm a software engineer in Turkey. I love learning and building <FancyLink to="/projects">projects</FancyLink>{" "}
+					and try to find time for <FancyLink to="/articles">writing</FancyLink> about what I learn. Well, this website
+					is one of my projects to try and show the things I learn.
 				</Bio>
 				<LinkWrapper>
 					<LinkImage href="https://github.com/T410">

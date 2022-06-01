@@ -13,28 +13,49 @@ function fetchFrom<T>(url: string, options?: { method: "POST" | "GET"; body: Bod
 			signal: controller.signal,
 		})
 			.then((response) => response.json())
-			.then((data) => (options?.methodName ? data.data[options?.methodName] : data)),
+			.then((data) => {
+				return options?.methodName ? data.data[options?.methodName] : data;
+			}),
 		abort: () => {
 			controller.abort();
 		},
 	};
 }
+type Arguments = {
+	[key: string]: string;
+}[];
 
 export interface Query {
 	method: string;
 	parameters: {
 		name: string;
 	}[];
+	arguments?: Arguments;
 }
 
+const prepareArguments = (val: Arguments) => {
+	const res = val
+		.map((argument) => {
+			return Object.keys(argument).map((key) => {
+				return `${key}:"${argument[key]}"`;
+			});
+		})
+		.join(",");
+	return res;
+};
+
 function queryBuilder(query: Query) {
+	const method = query.method + `${query.arguments ? "(" + prepareArguments(query.arguments) + ")" : ""}`;
+
+	const q = `{${method}{${query.parameters
+		.map((val) => {
+			return val.name + "\n";
+		})
+		.join("")}}}`;
+
 	return {
 		methodName: query.method,
-		query: `{${query.method}{${query.parameters
-			.map((val) => {
-				return val.name + "\n";
-			})
-			.join("")}}}`,
+		query: q,
 	};
 }
 

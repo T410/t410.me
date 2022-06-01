@@ -10,18 +10,23 @@ const contextDefaultValues: DarkModeContextState = {
 export const DarkModeContext = createContext<DarkModeContextState>(contextDefaultValues);
 
 const DarkModeProvider: FC = ({ children }) => {
-	const persistedDarkMode = usePersist<boolean>({ stateName: "darkMode", initialValue: contextDefaultValues.darkMode });
-	const [darkMode, setDarkMode] = useState<boolean>(persistedDarkMode.getState());
+	const [persistedDarkMode, setPersistedDarkMode] = usePersist<boolean>({
+		stateName: "darkMode",
+		initialValue: contextDefaultValues.darkMode,
+	});
+	const [darkMode, setDarkMode] = useState<boolean>(persistedDarkMode);
 
 	useEffect(() => {
-		persistedDarkMode.setState(darkMode);
-	}, [darkMode, persistedDarkMode]);
+		setPersistedDarkMode(darkMode);
+	}, [darkMode, setPersistedDarkMode]);
 
 	return (
 		<DarkModeContext.Provider
 			value={{
 				darkMode,
-				setDarkMode,
+				setDarkMode: (val: boolean) => {
+					setDarkMode(val);
+				},
 			}}
 		>
 			{children}

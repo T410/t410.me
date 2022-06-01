@@ -2,7 +2,7 @@ import { Fetch } from "utils/API";
 export enum Menu {
 	Projects = "projects" as any,
 	Articles = "articles" as any,
-	"About Me" = "about-me" as any,
+	Me = "me" as any,
 	Undefined = "undefined" as any,
 }
 
@@ -15,6 +15,7 @@ export interface APIContextState {
 	getArticle: (id: string) => Fetch<Article>;
 	getArticles: () => Fetch<ArticleListing[]>;
 	getProjects: () => Fetch<Project[]>;
+	getHeading: (route: string) => Fetch<Heading>;
 }
 
 export interface DarkModeContextState {
@@ -60,4 +61,10 @@ export interface Project {
 	description: string;
 	demo: string;
 	source: string;
+}
+
+export interface Heading {
+	route: string;
+	title: string;
+	detail: string;
 }

@@ -11,7 +11,7 @@ function NavItems() {
 		<>
 			<NavbarLink to={"/projects"}>Projects</NavbarLink>
 			<NavbarLink to={"/articles"}>Articles</NavbarLink>
-			<NavbarLink to={"/about-me"}>Me</NavbarLink>
+			<NavbarLink to={"/me"}>Me</NavbarLink>
 		</>
 	);
 }
@@ -23,7 +23,7 @@ const Navbar = () => {
 	useEffect(() => {
 		const m = location.pathname.split("/")[1] as unknown;
 		if ((m as string) === "") {
-			menuState[1](Menu["About Me"]);
+			menuState[1](Menu["Me"]);
 		} else {
 			menuState[1](m as Menu);
 		}

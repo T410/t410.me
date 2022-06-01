@@ -2,7 +2,7 @@ import { createContext, useState, FC } from "react";
 import { Menu, MenuContextState } from "types";
 
 const contextDefaultValues: MenuContextState = {
-	menu: Menu["About Me"],
+	menu: Menu["Me"],
 	setMenu: () => {},
 };
 

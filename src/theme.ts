@@ -27,6 +27,7 @@ const colors: { dark: Colors; light: Colors } = {
 
 		fontColor: "#d0d5df",
 		brightFontColor: "#eee",
+		darkFontColor: "rgba(235,240,255,0.5)",
 
 		darkBorderColor: "#111",
 		lightBorderColor: "hsla(0,0%,100%,0.1)",
@@ -55,6 +56,7 @@ const colors: { dark: Colors; light: Colors } = {
 
 		fontColor: "#343434",
 		brightFontColor: "#222",
+		darkFontColor: "rgba(235,240,255,0.5)",
 
 		darkBorderColor: "#bbb",
 		lightBorderColor: "#e0e0e0",

@@ -1,5 +1,5 @@
 import { createContext, FC } from "react";
-import { APIContextState, Article as IArticle, ArticleListing, Project } from "types";
+import { APIContextState, Article as IArticle, ArticleListing, Heading, Project } from "types";
 import { fetchFrom, queryBuilder } from "utils/API";
 import type { Query } from "utils/API";
 
@@ -24,6 +24,21 @@ const projectType: Query = {
 	],
 };
 
+const headingType: Query = {
+	method: "heading",
+	parameters: [
+		{
+			name: "route",
+		},
+		{
+			name: "title",
+		},
+		{
+			name: "detail",
+		},
+	],
+};
+
 const contextDefaultValue: APIContextState = {
 	getArticle: (id: string) => fetchFrom<IArticle>(`https://dev.to/api/articles/${id}`),
 	getArticles: () => fetchFrom<ArticleListing[]>("https://dev.to/api/articles?username=t410"),
@@ -32,6 +47,13 @@ const contextDefaultValue: APIContextState = {
 			method: "POST",
 			body: JSON.stringify({ query: queryBuilder(projectType).query }),
 			methodName: "projects",
+		});
+	},
+	getHeading: (route: string) => {
+		return fetchFrom<Heading>("https://api.t410.me/.netlify/functions/graphql", {
+			method: "POST",
+			body: JSON.stringify({ query: queryBuilder({ ...headingType, arguments: [{ route: route }] }).query }),
+			methodName: "heading",
 		});
 	},
 };

@@ -22,6 +22,7 @@ declare module "styled-components" {
 
 		fontColor: string;
 		brightFontColor: string;
+		darkFontColor: string;
 
 		lightBorderColor: string;
 		darkBorderColor: string;

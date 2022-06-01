@@ -7,9 +7,9 @@ interface TitleProps {
 
 const Title = styled.h1<TitleProps>`
 	color: ${({ theme }) => theme.colors.elements.h};
-	padding-bottom: 0.5rem;
 	font-size: ${({ fontSize }) => fontSize || "1.5rem"};
 	font-weight: ${({ fontWeight }) => fontWeight || "600"};
+	margin: 0 0 0.75rem 0;
 `;
 
 const UnderlinedTitle = styled(Title)`

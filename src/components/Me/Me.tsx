@@ -17,7 +17,7 @@ const Title = styled.h1`
 `;
 
 const Bio = styled.p`
-	margin: 0;
+	margin: 0 0 0.75rem 0;
 	line-height: 2rem;
 	color: ${({ theme }) => theme.colors.fontColor};
 `;
@@ -48,7 +48,7 @@ const LinkImage = styled.a`
 
 	& > img {
 		border-radius: 0;
-		margin-left: 0%;
+		margin: 0;
 		width: 32px;
 		height: auto;
 	}

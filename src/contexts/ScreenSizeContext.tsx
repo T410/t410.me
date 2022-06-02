@@ -19,7 +19,7 @@ const detectScreenSize = (val: number) => {
 	return screenSize;
 };
 
-const DarkModeProvider: FC = ({ children }) => {
+const ScreenSizeProvider: FC = ({ children }) => {
 	const [screenSize, setScreenSize] = useState<ScreenSize>(contextDefaultValues.screenSize);
 
 	useEffect(() => {
@@ -44,4 +44,4 @@ const DarkModeProvider: FC = ({ children }) => {
 	);
 };
 
-export default DarkModeProvider;
+export default ScreenSizeProvider;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 interface UsePersistProps<T> {
 	stateName: string;
@@ -7,15 +7,21 @@ interface UsePersistProps<T> {
 
 const usePersist = <T>({ stateName, initialValue }: UsePersistProps<T>): [T, (value: T) => void] => {
 	const name = `persist/${stateName}`;
-	const [state, setState] = useState<T>(initialValue);
 
-	const getValue = () => {
+	const getFromStorage = () => {
 		try {
-			return JSON.parse(localStorage.getItem(name) + "");
+			const val = JSON.parse(localStorage.getItem(name) + "");
+			if (val !== null) {
+				return val;
+			} else {
+				localStorage.setItem(name, JSON.stringify(initialValue));
+			}
 		} catch {
-			return state;
+			return initialValue;
 		}
 	};
+
+	const [state, setState] = useState<T>(getFromStorage());
 
 	const setValue = useCallback(
 		(value: T) => {
@@ -25,22 +31,7 @@ const usePersist = <T>({ stateName, initialValue }: UsePersistProps<T>): [T, (va
 		[name]
 	);
 
-	useEffect(() => {
-		const value = localStorage.getItem(name);
-		if (initialValue && value === null) {
-			localStorage.setItem(name, JSON.stringify(initialValue));
-		}
-
-		if (value) {
-			try {
-				setState(JSON.parse(value));
-			} catch {
-				setValue(initialValue);
-			}
-		}
-	}, [initialValue, name, setValue]);
-
-	return [getValue(), setValue];
+	return [state, setValue];
 };
 
 export default usePersist;

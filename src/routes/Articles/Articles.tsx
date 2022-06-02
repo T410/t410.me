@@ -6,6 +6,8 @@ import { removeLastDashAndWord } from "utils/stringParser";
 import { APIContext } from "contexts/APIContext";
 import styled from "styled-components";
 import { UnderlinedTitle } from "elements";
+import { HeadingContext } from "contexts/HeadingContext";
+import { MetaTagContext } from "contexts/MetaTagContext";
 
 type YearArticle = [number, ...Array<ArticleListing>][];
 
@@ -67,7 +69,13 @@ const parseDate = (_date: string) => {
 const Articles = () => {
 	const [yearArticles, setArticles] = useState<YearArticle>();
 	const [isLoading, setIsLoading] = useState(true);
+	const { isLoading: isHeadingLoading } = useContext(HeadingContext);
 	const { getArticles } = useContext(APIContext);
+	const { setMetaTitle } = useContext(MetaTagContext);
+
+	useEffect(() => {
+		setMetaTitle("Articles");
+	}, [setMetaTitle]);
 
 	useEffect(() => {
 		if (isLoading) {
@@ -82,11 +90,11 @@ const Articles = () => {
 
 			return abort;
 		}
-	}, [getArticles, isLoading, yearArticles]);
+	}, [getArticles, isLoading]);
 
 	return (
 		<Wrapper>
-			{yearArticles ? (
+			{yearArticles && !isHeadingLoading ? (
 				yearArticles.map(([year, ...articles], i) => (
 					<div key={i}>
 						<UnderlinedTitle>{year}</UnderlinedTitle>

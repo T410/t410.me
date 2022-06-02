@@ -1,6 +1,7 @@
-import { createContext, useState, FC, useEffect } from "react";
+import { createContext, useState, FC, useEffect, useContext } from "react";
 import { matchPath } from "react-router-dom";
 import { removeDash, upperFirst, forEachWord } from "utils/stringParser";
+import { MetaTagContext } from "./MetaTagContext";
 
 const INITIAL_TITLE = "Tayyib Cankat";
 
@@ -10,28 +11,33 @@ declare global {
 	}
 }
 
-interface LocationContextState {
+interface TitleContextState {
 	pathname: string;
 	setPath: (pathname: string) => void;
 }
 
-const contextDefaultValues: LocationContextState = {
+const contextDefaultValues: TitleContextState = {
 	pathname: "/",
 	setPath: () => {},
 };
 
-export const LocationContext = createContext<LocationContextState>(contextDefaultValues);
+export const LocationContext = createContext<TitleContextState>(contextDefaultValues);
+
+const withInitialTitle = (val: string) => {
+	return `${val} | ${INITIAL_TITLE}`;
+};
 
 const setTitle = (title: string) => {
-	document.title = title + " | " + INITIAL_TITLE;
+	document.title = title;
 };
 
 const LocationProvider: FC = ({ children }) => {
 	const [pathname, setPathname] = useState<string>(contextDefaultValues.pathname);
+	// const { setMetaTitle } = useContext(MetaTagContext);
 
 	useEffect(() => {
 		const match = matchPath("/articles/:id/:slug", pathname);
-		let title = "";
+		let title = "Software Engineer";
 
 		if (match) {
 			title = forEachWord(removeDash(match.params.slug || ""))(upperFirst);
@@ -39,7 +45,8 @@ const LocationProvider: FC = ({ children }) => {
 			title = forEachWord(removeDash(pathname.split("/")[1]))(upperFirst);
 		}
 
-		setTitle(title);
+		setTitle(withInitialTitle(title));
+		// setMetaTitle(withInitialTitle(title));
 		if (window.gtag) {
 			window.gtag("set", "page_path", "debug" + pathname);
 			window.gtag("event", "page_view");

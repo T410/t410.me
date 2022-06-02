@@ -30,8 +30,22 @@ function parseGithub(str: string) {
 	return str;
 }
 
+function parseFigcaption(str: string) {
+	const regex = /<figcaption>([^%]+)<\/figcaption>/g;
+	const match = str.match(regex);
+	if (match) {
+		match.forEach((m) => {
+			str = str.replaceAll(m, m.replace(regex, " $1"));
+		});
+	}
+	return str;
+}
+
 function parseString(str: string) {
-	return parseGist(parseGithub(str));
+	let res = parseGithub(str);
+	res = parseGist(res);
+	res = parseFigcaption(res);
+	return res;
 }
 
 const P = styled.p`
@@ -104,6 +118,7 @@ export default function Markdown({ markdown }: { markdown: string }) {
 				pre: (props: any) => <Pre {...props} />,
 				code: (props: any) => <Code {...props} />,
 				br: () => <br />,
+				figcaption: (props: any) => <P {...props} />,
 			}}
 		>
 			{parseString(markdown)}

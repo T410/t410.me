@@ -1,17 +1,19 @@
-import { Routes, Route, Outlet, useLocation } from "react-router-dom";
-import { Navbar } from "components";
+import { useContext, useEffect } from "react";
 import { Articles, Article, Projects, Home } from "routes";
-import { useContext, useEffect, useState } from "react";
-import { LocationContext } from "contexts/TitleContext";
-import styled, { ThemeProvider } from "styled-components";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
+
 import { colors, theme } from "theme";
 import GlobalStyle from "./globalStyles";
+import styled, { ThemeProvider } from "styled-components";
 
-import { DarkModeContext } from "contexts/DarkModeContext";
+import { Navbar } from "components";
 import { SubHeading, Title } from "elements";
-import { APIContext } from "contexts/APIContext";
 
-import type { Heading } from "types";
+import { APIContext } from "contexts/APIContext";
+import { LocationContext } from "contexts/TitleContext";
+import { HeadingContext } from "contexts/HeadingContext";
+import { DarkModeContext } from "contexts/DarkModeContext";
+import { MetaTagContext } from "contexts/MetaTagContext";
 
 const Main = styled.main`
 	margin-top: 60px;
@@ -39,30 +41,41 @@ const TitleDiv = styled.div`
 
 function WithMain() {
 	const { getHeading } = useContext(APIContext);
-	const [heading, setHeading] = useState<Heading>();
+	const { heading, setHeading, isLoading, setIsLoading: setIsHeadingLoading } = useContext(HeadingContext);
 	const { pathname } = useContext(LocationContext);
+	const { setMetaDescription } = useContext(MetaTagContext);
 
 	useEffect(() => {
 		if (pathname) {
-			const { abort, request } = getHeading(pathname);
+			const { abort, request } = getHeading(pathname === "/" ? "/me" : pathname);
 			request
-				.then((data) => {
-					setHeading(data);
+				.then((heading) => {
+					setHeading(heading);
+					setIsHeadingLoading(false);
+					setMetaDescription(heading.detail);
 				})
 				.catch((e) => {
 					// console.log(e);
 				});
 
-			return abort;
+			return () => {
+				setHeading(undefined);
+				setIsHeadingLoading(true);
+				abort();
+			};
 		}
-	}, [pathname, getHeading]);
+	}, [pathname, getHeading, setHeading, setIsHeadingLoading, setMetaDescription]);
 
 	return (
 		<Main>
 			<ArticleView>
 				<TitleDiv>
-					<Title fontSize={"2.3rem"}>{heading?.title}</Title>
-					<SubHeading>{heading?.detail}</SubHeading>
+					{!isLoading && (
+						<>
+							<Title fontSize={"2.3rem"}>{heading?.title}</Title>
+							<SubHeading>{heading?.detail}</SubHeading>
+						</>
+					)}
 				</TitleDiv>
 				<Outlet />
 			</ArticleView>

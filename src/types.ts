@@ -23,15 +23,22 @@ export interface MetaTagContextState {
 }
 
 export interface APIContextState {
-	getArticle: (id: string) => Fetch<Article>;
-	getArticles: () => Fetch<ArticleListing[]>;
-	getProjects: () => Fetch<Project[]>;
-	getHeading: (route: string) => Fetch<Heading>;
+	getArticle(id: string): Fetch<Article>;
+	getArticles(): Fetch<ArticleListing[]>;
+	getProjects(): Fetch<Project[]>;
+	getHeading(route: string): Fetch<Heading>;
 }
 
 export interface DarkModeContextState {
 	darkMode: boolean;
-	setDarkMode: (darkMode: boolean) => void;
+	setDarkMode(darkMode: boolean): void;
+}
+
+export interface HeadingContextState {
+	heading: Heading | undefined;
+	isLoading: boolean;
+	setHeading(heading: Heading | undefined): void;
+	setIsLoading(isLoading: boolean): void;
 }
 
 export enum ScreenSize {
@@ -43,7 +50,7 @@ export enum ScreenSize {
 }
 export interface ScreenSizeContextState {
 	screenSize: ScreenSize;
-	setScreenSize: (screenSize: ScreenSize) => void;
+	setScreenSize(screenSize: ScreenSize): void;
 }
 
 export interface ArticleListing {

@@ -5,6 +5,7 @@ const SubHeading = styled.p`
 	padding-bottom: 0.5rem;
 	font-size: 1.4rem;
 	margin: 0;
+	text-align: center;
 `;
 
 export { SubHeading };

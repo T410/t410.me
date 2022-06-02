@@ -8,7 +8,18 @@ export enum Menu {
 
 export interface MenuContextState {
 	menu: Menu;
-	setMenu: (menu: Menu) => void;
+	setMenu(menu: Menu): void;
+}
+
+export interface TitleContextState {
+	pathname: string;
+	setPath(pathname: string): void;
+}
+
+export interface MetaTagContextState {
+	setMetaTitle(title: string): void;
+	setMetaDescription(description: string): void;
+	setMetaThemeColor(color: string): void;
 }
 
 export interface APIContextState {

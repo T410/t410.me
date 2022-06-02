@@ -1,7 +1,6 @@
-import { createContext, useState, FC, useEffect, useContext } from "react";
+import { createContext, useState, FC, useEffect } from "react";
 import { matchPath } from "react-router-dom";
 import { removeDash, upperFirst, forEachWord } from "utils/stringParser";
-import { MetaTagContext } from "./MetaTagContext";
 
 const INITIAL_TITLE = "Tayyib Cankat";
 

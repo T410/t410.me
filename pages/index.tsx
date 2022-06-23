@@ -64,11 +64,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		],
 	};
 
-	await fetchFrom<Heading>("https://api.t410.me/.netlify/functions/graphql", {
-		method: "POST",
-		body: JSON.stringify({ query: queryBuilder({ ...headingType, arguments: [{ route: "/" }] }).query }),
-		methodName: "heading",
-	}).request;
+	// await fetchFrom<Heading>("https://api.t410.me/.netlify/functions/graphql", {
+	// 	method: "POST",
+	// 	body: JSON.stringify({ query: queryBuilder({ ...headingType, arguments: [{ route: "/" }] }).query }),
+	// 	methodName: "heading",
+	// }).request;
 
 	return {
 		props: { asd: "asd" },

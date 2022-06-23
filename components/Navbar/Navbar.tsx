@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, ScreenSize } from "types";
 import { Nav, Section } from "./Navbar.styles";
-import { DarkModeToggle } from "elements";
 import { A } from "elements";
 import { Screen } from "components/Media";
 
@@ -38,9 +37,6 @@ const Navbar = () => {
 				</Screen>
 				<Section>
 					<NavItems />
-				</Section>
-				<Section>
-					<DarkModeToggle />
 				</Section>
 			</Nav>
 		</>

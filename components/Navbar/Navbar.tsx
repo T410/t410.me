@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { Menu, ScreenSize } from "types";
 import { Nav, Section } from "./Navbar.styles";
 import { DarkModeToggle } from "elements";
-import { NavbarLink } from "elements";
+import { A } from "elements";
 import { Screen } from "components/Media";
 
 function NavItems() {
 	return (
 		<>
-			<NavbarLink href={"/projects"}>Projects</NavbarLink>
-			<NavbarLink href={"/articles"}>Articles</NavbarLink>
-			<NavbarLink href={"/me"}>Me</NavbarLink>
+			<A href={"/projects"}>Projects</A>
+			<A href={"/articles"}>Articles</A>
+			<A href={"/me"}>Me</A>
 		</>
 	);
 }
@@ -33,7 +33,7 @@ const Navbar = () => {
 			<Nav>
 				<Screen showOn={ScreenSize.S}>
 					<Section>
-						<NavbarLink href={"/"}>Tayyib Cankat</NavbarLink>
+						<A href={"/"}>Tayyib Cankat</A>
 					</Section>
 				</Screen>
 				<Section>

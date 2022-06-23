@@ -1,7 +1,8 @@
 // import styled from "styled-components";
-// import { A } from "./A";
+import { FC, ReactNode } from "react";
+import { A } from "./A";
 
-// const Button = styled(A)`
+//  const Button = styled(A)`
 // 	background-color: ${({ theme }) => theme.colors.background};
 // 	border: 1px solid ${({ theme }) => theme.colors.lightBorderColor};
 // 	border-radius: ${({ theme }) => theme.borderRadius};
@@ -18,4 +19,8 @@
 // 	}
 // `;
 
-// export default Button;
+const Button: FC<{ children: ReactNode; href: string }> = ({ children, href }) => {
+	return <A href={href}>{children}</A>;
+};
+
+export default Button;

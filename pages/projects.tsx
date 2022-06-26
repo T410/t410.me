@@ -23,13 +23,15 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 			</header>
 			<div className="flex flex-row flex-wrap align-center justify-center gap-4">
 				{projects.map((project) => (
-					<Card key={project.id} className="max-w-xs">
-						<h1 className="text-accent mt-0 font-semibold text-2xl">{project.title}</h1>
-						<div className="flex flex-row justify-center space-x-4">
-							<Button href={project.demo}>Demo</Button>
-							<Button href={project.source}>Source</Button>
-						</div>
-						<SubTitle className="break-words">{project.description}</SubTitle>
+					<Card key={project.id} className="max-w-xs p-[2px] gradient-round">
+						<Card className="">
+							<h1 className="text-accent mt-0 font-semibold text-2xl">{project.title}</h1>
+							<div className="flex flex-row justify-center space-x-4 mt-4">
+								<Button href={project.demo}>Demo</Button>
+								<Button href={project.source}>Source</Button>
+							</div>
+							<SubTitle className="break-words !mb-0 mt-4">{project.description}</SubTitle>
+						</Card>
 					</Card>
 				))}
 			</div>

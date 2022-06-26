@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FC, useContext } from "react";
-import { A, FancyA, Icon, SubTitle, Title } from "elements";
+import { A, Card, FancyA, Icon, SubTitle, Title } from "elements";
 import { Head } from "components";
 import { DarkModeContext } from "contexts/DarkModeContext";
 
@@ -36,13 +36,15 @@ const Home: FC = () => {
 			/>
 
 			<div className="w-32 h-32 mb-4 md:mb-0 md:ml-8 md:w-64 md:h-64">
-				<Image
-					src={pp}
-					alt="Portrait picture of me, Tayyib Cankat"
-					layout="responsive"
-					priority
-					className="rounded-lg"
-				/>
+				<Card className="p-1 gradient-round">
+					<Image
+						src={pp}
+						alt="Portrait picture of me, Tayyib Cankat"
+						layout="responsive"
+						priority
+						className="rounded-lg"
+					/>
+				</Card>
 			</div>
 			<div>
 				<Title>Hi, I&apos;m Tayyib</Title>

@@ -32,9 +32,9 @@ const Head: FC<HeadProps> = ({ title, description }) => {
 
 			<meta property="og:type" content="website" />
 
-			<meta property="og:image" content="logo_big.png" />
-			<meta property="twitter:image" content="logo_big.png" />
-			<meta itemProp="image" content="logo_big.png" />
+			<meta property="og:image" content="https://t410.me/logo_big.png" />
+			<meta property="twitter:image" content="https://t410.me/logo_big.png" />
+			<meta itemProp="image" content="https://t410.me/logo_big.png" />
 
 			<meta property="og:image:width" content="790" />
 			<meta property="og:image:height" content="735" />

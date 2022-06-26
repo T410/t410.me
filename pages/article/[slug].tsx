@@ -6,7 +6,6 @@ import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { FancyA, Title, UnderlinedTitle } from "elements";
 import Gist from "react-gist";
-import html from "remark-html";
 import gfm from "remark-gfm";
 
 import type { Article } from "types";

@@ -1,6 +1,5 @@
 import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
 import type { Article } from "types";
 import path from "path";
 
@@ -14,8 +13,7 @@ export function getArticleBySlug(slug: string) {
 	}
 
 	const fullPath = join(postsDirectory, `${article.id}.md`);
-	const fileContents = fs.readFileSync(fullPath, "utf8");
-	const { data, content } = matter(fileContents);
+	const content = fs.readFileSync(fullPath, "utf8");
 
 	return { ...article, content };
 }

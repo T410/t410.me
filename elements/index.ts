@@ -1,17 +1,8 @@
-import { A } from "./A";
-// import Button from "./Button";
-import { Title, UnderlinedTitle } from "./Title";
-import { SubHeading } from "./Text";
+import Tag from "./Tag";
+import Icon from "./Icon";
+import Card from "./Card";
+import Button from "./Button";
+import { A, FancyA } from "./A";
+import { Title, SubTitle, UnderlinedTitle } from "./Title";
 
-export {
-	A,
-	// FancyA,
-	// FancyLink,
-	// Button,
-	// StyledLink,
-	// NavbarLink,
-	// RowFlex,
-	UnderlinedTitle,
-	Title,
-	SubHeading,
-};
+export { A, Card, Tag, Button, FancyA, Icon, Title, SubTitle, UnderlinedTitle };

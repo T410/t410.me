@@ -2,13 +2,15 @@ import { Html, Head, Main, NextScript } from "next/document";
 import { FC } from "react";
 
 const Document: FC = () => {
+	const darkMode = true;
+
 	return (
-		<Html>
-			<Head />
-			<body>
-				<div className="w-3/4 m-auto flex flex-col">
-					<Main />
-				</div>
+		<Html className={darkMode ? "dark" : "light"}>
+			<Head>
+				<link rel="shortcut icon" href="/logo_big.png" />
+			</Head>
+			<body className="dark:bg-dark-background bg-light-background dark:text-dark-brightFont text-light-brightFont selection:bg-accent selection:dark:text-dark-background selection:text-light-background">
+				<Main />
 				<NextScript />
 			</body>
 		</Html>

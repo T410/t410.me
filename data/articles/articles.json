@@ -1,0 +1,45 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "How to CI/CD using PM2 for your Node.js project",
+            "description": "You have a Node.js project in your local machine but you don't know how to deploy it to your remote server or you use old fashioned way by copying the contents from your computer to the remote server using FTP?",
+            "tags": [
+                "Node.js",
+                "CI/CD",
+                "PM2",
+                "CI",
+                "CD",
+                "Deployment"
+            ],
+            "published_at": "2021-02-15",
+            "updated_at": "2022-02-15",
+            "slug": "how-to-ci-cd-for-node-project-pm2"
+        },
+        {
+            "id": 2,
+            "title": "How to deploy SSL Certificate [nginx]",
+            "description": "So you want to install/deploy an SSL Certificate to your website? Great! In this post, you can see how to do so with simple steps with 2 options.",
+            "tags": [
+                "SSL",
+                "nginx"
+            ],
+            "published_at": "2021-02-12",
+            "updated_at": "2022-05-30",
+            "slug": "how-to-deploy-ssl-certificate-nginx"
+        },
+        {
+            "id": 3,
+            "title": "How to persistently store state in React? [usePersist]",
+            "description": "Learn how to keep persistent state in your React application using the custom usePersist hook.",
+            "tags": [
+                "React",
+                "useState",
+                "usePersist"
+            ],
+            "published_at": "2022-06-01",
+            "updated_at": "2022-06-02",
+            "slug": "how-to-persistently-store-state-in-react-usepersist"
+        }
+    ]
+}

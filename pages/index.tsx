@@ -1,78 +1,66 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { FC, useContext } from "react";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import { useRouter } from "next/router";
-
-import { devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
-
-import { Loading } from "components";
-// import { Wrapper, Details, Image, LinkImage, Title, LinkWrapper, Bio } from "components/Me";
+import { A, FancyA, Icon, SubTitle, Title } from "elements";
+import { Head } from "components";
 import { DarkModeContext } from "contexts/DarkModeContext";
-import { HeadingContext } from "contexts/HeadingContext";
-import { A, Title } from "elements";
-import { APIContext } from "contexts/APIContext";
-import { fetchFrom, Query, queryBuilder } from "utils/API";
-import { Heading } from "types";
+
+import { pp, devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
+import { title } from "meta";
 
 const Socials = () => {
 	const { darkMode } = useContext(DarkModeContext);
 
 	return (
-		<div>
+		<div className="space-x-2 mt-4">
 			<A href="https://github.com/T410">
-				<img src={darkMode ? github : github_black} alt="github link" />
+				<Icon src={darkMode ? github : github_black} alt="github link" />
 			</A>
 			<A href="https://dev.to/T410">
-				<img src={darkMode ? devto : devto_black} alt="devto link" />
+				<Icon src={darkMode ? devto : devto_black} alt="devto link" />
 			</A>
 			<A href="https://linkedin.com/in/MT410">
-				<img src={darkMode ? linkedin : linkedin_black} alt="Linkedin link" />
+				<Icon src={darkMode ? linkedin : linkedin_black} alt="Linkedin link" />
 			</A>
 		</div>
 	);
 };
 
-const Home: FC<{ asd: string }> = ({ asd }) => {
+const Home: FC = () => {
 	return (
-		<div className="h-full">
+		<div className="flex md:flex-row-reverse flex-col text-left">
+			<Head
+				title={`Personal site of ${title}`}
+				description="You can check out some of my projects and technical articles"
+			/>
+
+			<div className="w-32 h-32 mb-4 md:mb-0 md:ml-8 md:w-64 md:h-64">
+				<Image
+					src={pp}
+					alt="Portrait picture of me, Tayyib Cankat"
+					layout="responsive"
+					priority
+					className="rounded-lg"
+				/>
+			</div>
 			<div>
-				<Title>Hey, I'm Tayyib.</Title>
-				<div>
-					I'm a software engineer in Turkey. I love learning and building <A href="/projects">projects</A> and try to
-					find time for <A href="/articles">writing</A> about what I learn. Well, this website is one of my projects to
-					try and show the things I learn.
-				</div>
+				<Title>Hi, I&apos;m Tayyib</Title>
+				<SubTitle className="max-w-lg">
+					I&apos;m a software engineer in Turkey. I love learning and building{" "}
+					<Link href="/projects" passHref>
+						<FancyA>projects</FancyA>
+					</Link>{" "}
+					and try to find time for{" "}
+					<Link href="/articles" passHref>
+						<FancyA>writing</FancyA>
+					</Link>{" "}
+					about what I learn. Well, this website is one of my projects to try and show the things I learn.
+				</SubTitle>
 				<Socials />
 			</div>
-			<img src="https://avatars.githubusercontent.com/u/8334449?v=4" alt="Tayyib" />
 		</div>
 	);
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const headingType: Query = {
-		method: "heading",
-		parameters: [
-			{
-				name: "route",
-			},
-			{
-				name: "title",
-			},
-			{
-				name: "detail",
-			},
-		],
-	};
-
-	// await fetchFrom<Heading>("https://api.t410.me/.netlify/functions/graphql", {
-	// 	method: "POST",
-	// 	body: JSON.stringify({ query: queryBuilder({ ...headingType, arguments: [{ route: "/" }] }).query }),
-	// 	methodName: "heading",
-	// }).request;
-
-	return {
-		props: { asd: "asd" },
-	};
 };
 
 export default Home;

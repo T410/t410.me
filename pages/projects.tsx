@@ -3,8 +3,9 @@ import { GetStaticProps } from "next";
 import { promises as fs } from "fs";
 import path from "path";
 import { Project } from "types";
-import { AnchorHTMLAttributes, FC, ReactNode } from "react";
-import { Card, Head } from "components";
+import { FC } from "react";
+import { Head } from "components";
+import { Card } from "elements";
 import { title } from "meta";
 
 const Projects: FC<{ projects: Project[] }> = ({ projects }) => {

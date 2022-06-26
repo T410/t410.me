@@ -10,4 +10,4 @@ const Card: FC<{ children: ReactNode; className?: string }> = ({ children, class
 	);
 };
 
-export { Card };
+export default Card;

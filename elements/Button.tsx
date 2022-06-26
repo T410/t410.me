@@ -1,4 +1,3 @@
-// import styled from "styled-components";
 import { AnchorHTMLAttributes, FC, ReactNode } from "react";
 
 const Button: FC<{ children: ReactNode } & AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href }) => {

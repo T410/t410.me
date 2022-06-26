@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from "react";
-import Link, { LinkProps } from "next/link";
 
 interface AnchorProps {
 	href?: string;

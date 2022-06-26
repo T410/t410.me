@@ -1,8 +1,6 @@
 import { ComponentProps, FC, ReactNode } from "react";
 
-import APIContextProvider from "./APIContext";
 import DarkModeContextProvider from "./DarkModeContext";
-import ScreenSizeContextProvider from "./ScreenSizeContext";
 
 export const combineComponents = (...components: FC<{ children: ReactNode }>[]): FC<{ children: ReactNode }> => {
 	return components.reduce(
@@ -19,5 +17,5 @@ export const combineComponents = (...components: FC<{ children: ReactNode }>[]):
 	);
 };
 
-const providers = [APIContextProvider, DarkModeContextProvider, ScreenSizeContextProvider];
+const providers = [DarkModeContextProvider];
 export const AppContextProvider = combineComponents(...providers);

@@ -35,12 +35,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	if (!article) return { notFound: true };
 
-	// const content = await markdownToHtml(article.content || "");
-
 	return {
 		props: {
 			...article,
-			// content,
 		},
 	};
 };

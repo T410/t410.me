@@ -1,6 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react";
-import { Menu, ScreenSize } from "types";
-import { A } from "elements";
+import { FC, ReactNode } from "react";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 
@@ -34,7 +32,7 @@ const Nav: FC<{ children: ReactNode }> = ({ children }) => (
 	</header>
 );
 
-const Navbar = () => {
+const Navbar: FC = () => {
 	const { asPath } = useRouter();
 
 	return (

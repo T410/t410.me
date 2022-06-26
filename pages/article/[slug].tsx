@@ -3,8 +3,10 @@ import { getArticleBySlug, listArticles } from "lib/api";
 import { ParsedUrlQuery } from "querystring";
 
 import { FC, ReactNode, useContext } from "react";
+import { Head } from "components";
 import ReactMarkdown from "react-markdown";
-import { FancyA, Title, UnderlinedTitle } from "elements";
+import { DarkModeContext } from "contexts/DarkModeContext";
+import { FancyA, Tag, Title, UnderlinedTitle } from "elements";
 import Gist from "react-gist";
 import gfm from "remark-gfm";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -13,8 +15,7 @@ import { theme } from "tailwind.config";
 
 import type { Article } from "types";
 import type { ReactMarkdownProps } from "react-markdown/lib/complex-types";
-import { DarkModeContext } from "contexts/DarkModeContext";
-import Image from "next/image";
+import { articleSuffix } from "meta";
 
 interface Params extends ParsedUrlQuery {
 	slug: string;
@@ -130,13 +131,26 @@ const Pre: FC<MarkdownProps> = ({ node }) => {
 	);
 };
 
-const Article: FC<Article> = ({ title, content, published_at }) => {
+const Tags: FC<{ tags: string[] }> = ({ tags }) => {
+	return (
+		<div className="mb-4 flex flex-row justify-center space-x-4">
+			{tags.length > 0 && tags.map((tag, id) => <Tag key={id}>#{tag}</Tag>)}
+		</div>
+	);
+};
+
+const Article: FC<Article> = ({ title, content, published_at, description, tags }) => {
 	return (
 		<article className="w-full !break-words">
+			<Head title={`${title} ${articleSuffix}`} description={description} />
+
 			<Title>{title}</Title>
 			<p className="font-mono text-right w-full text-sm mb-8">
 				Written by <FancyA href="/">Tayyib Cankat</FancyA> on {published_at}
 			</p>
+
+			<Tags tags={tags} />
+
 			<ReactMarkdown
 				remarkPlugins={[gfm]}
 				components={{

@@ -1,10 +1,13 @@
-import { SubTitle, Title, UnderlinedTitle } from "elements";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
-import { FC, forwardRef, ReactNode } from "react";
-import { Article, YearArticle } from "types";
-
 import { listArticles } from "lib/api";
+import { title } from "meta";
+
+import { FC, forwardRef, ReactNode } from "react";
+import { SubTitle, Title, UnderlinedTitle } from "elements";
+import { Head } from "components";
+
+import { Article, YearArticle } from "types";
 
 const splitByYear = (articles: Article[]) => {
 	const years: YearArticle = [];
@@ -61,6 +64,8 @@ const parseDate = (_date: string) => {
 const Articles: FC<{ articles: YearArticle }> = ({ articles }) => {
 	return (
 		<div>
+			<Head title={`Articles | ${title}`} description="Technical articles, tutorials I have written." />
+
 			<header className="text-center">
 				<Title>Articles</Title>
 				<SubTitle className="!text-2xl text">Technical articles, tutorials I have written.</SubTitle>

@@ -15,7 +15,9 @@ const Link: FC<CustomLinkProps & LinkProps> = ({ children, href, asPath }) => {
 
 	return (
 		<NextLink href={href}>
-			<a className={`${activeClass} gap-2 rounded-lg p-2 hover:dark:bg-dark-navbarHover hover:bg-light-navbarHover`}>
+			<a
+				className={`${activeClass} gap-2 rounded-lg p-2 hover:dark:bg-dark-navbarHover hover:bg-light-navbarHover font-medium`}
+			>
 				{children}
 			</a>
 		</NextLink>
@@ -26,8 +28,9 @@ const Section: FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 const Nav: FC<{ children: ReactNode }> = ({ children }) => (
-	<header className="fixed w-full h-14 z-10 top-0 border-b border-b-accent dark:bg-dark-navbar bg-light-navbar">
+	<header className="fixed w-full h-14 z-10 top-0 dark:bg-dark-navbar bg-light-navbar">
 		<div className="flex justify-between items-center h-full max-w-screen-xl m-auto py-2 px-6 sm:p-2">{children}</div>
+		<div className="gradient h-1"></div>
 	</header>
 );
 

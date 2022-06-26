@@ -1,9 +1,13 @@
-import { FC, useContext } from "react";
-import { A, FancyA, Icon, SubTitle, Title } from "elements";
 import Image from "next/image";
 import Link from "next/link";
-import { pp, devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
+
+import { FC, useContext } from "react";
+import { A, FancyA, Icon, SubTitle, Title } from "elements";
+import { Head } from "components";
 import { DarkModeContext } from "contexts/DarkModeContext";
+
+import { pp, devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
+import { title } from "meta";
 
 const Socials = () => {
 	const { darkMode } = useContext(DarkModeContext);
@@ -26,6 +30,11 @@ const Socials = () => {
 const Home: FC = () => {
 	return (
 		<div className="flex md:flex-row-reverse flex-col text-left">
+			<Head
+				title={`Personal site of ${title}`}
+				description="You can check out some of my projects and technical articles"
+			/>
+
 			<div className="w-32 h-32 mb-4 md:mb-0 md:ml-8 md:w-64 md:h-64">
 				<Image
 					src={pp}

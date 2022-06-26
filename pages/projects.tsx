@@ -1,26 +1,19 @@
-import { SubTitle, Title } from "elements";
+import { Button, SubTitle, Title } from "elements";
 import { GetStaticProps } from "next";
 import { promises as fs } from "fs";
 import path from "path";
 import { Project } from "types";
 import { AnchorHTMLAttributes, FC, ReactNode } from "react";
-import Link from "next/link";
-import { Card, CardViewer } from "components";
-
-const Button: FC<{ children: ReactNode } & AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href }) => {
-	return (
-		<a
-			href={href}
-			className="dark:bg-dark-background bg-light-background border dark:border-dark-lightBorderColor border-light-lightBorderColor rounded-lg text-base py-0.4rem px-0.6rem font-semibold dark:text-dark-brightFont text-light-brightFont hover:!text-accent hover:border-accent"
-		>
-			{children}
-		</a>
-	);
-};
+import { Card, Head } from "components";
+import { title } from "meta";
 
 const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<div>
+			<Head
+				title={`Projects | ${title}`}
+				description="Some of the projects of mine. Most of these are developed to get me learn new things and/or improve my skills."
+			/>
 			<header className="text-center">
 				<Title>Projects</Title>
 				<SubTitle className="!text-2xl text">

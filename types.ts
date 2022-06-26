@@ -70,7 +70,7 @@ export interface Article {
 	title: string;
 	description: string;
 	content: string;
-	tags: string;
+	tags: string[];
 	published_at: string;
 	updated_at: string;
 	slug: string;

@@ -1,7 +1,6 @@
 import { usePersist } from "hooks";
 import { createContext, FC, ReactNode, useContext, useEffect, useState } from "react";
 import { DarkModeContextState } from "types";
-import { MetaTagContext } from "./MetaTagContext";
 // import { colors } from "theme";
 
 const contextDefaultValues: DarkModeContextState = {
@@ -17,12 +16,10 @@ const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 		initialValue: contextDefaultValues.darkMode,
 	});
 	const [darkMode, setDarkMode] = useState<boolean>(persistedDarkMode);
-	const { setMetaThemeColor } = useContext(MetaTagContext);
 
 	useEffect(() => {
 		setPersistedDarkMode(darkMode);
-		setMetaThemeColor(darkMode ? "#000" : "#eee");
-	}, [darkMode, setPersistedDarkMode, setMetaThemeColor]);
+	}, [darkMode, setPersistedDarkMode]);
 
 	return (
 		<DarkModeContext.Provider

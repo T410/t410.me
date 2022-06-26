@@ -10,7 +10,12 @@ const Title: FC<TitleProps> = ({ children, className }) => {
 };
 
 const UnderlinedTitle: FC<TitleProps> = ({ children, className }) => {
-	return <h1 className={`${className} text-4xl font-semibold mb-3 border-b-orange-500 border-b`}>{children}</h1>;
+	return (
+		<div className="mb-4">
+			<h1 className={`${className} text-4xl font-semibold`}>{children}</h1>
+			<div className="gradient h-1 rounded" />
+		</div>
+	);
 };
 
 const SubTitle: FC<TitleProps> = ({ children, className }) => {

@@ -2,6 +2,7 @@ module.exports = {
 	content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./elements/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		colors: {
+			transparent: "transparent",
 			dark: {
 				navbar: "#1c1e24",
 				navbarHover: "#272a33",
@@ -35,6 +36,8 @@ module.exports = {
 				},
 			},
 			accent: "#fdb54a",
+			tagFrom: "#60a5fa",
+			tagTo: "#f472b6",
 		},
 		extend: {
 			gridTemplateColumns: {

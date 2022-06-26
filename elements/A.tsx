@@ -4,6 +4,7 @@ import Link, { LinkProps } from "next/link";
 interface AnchorProps {
 	href?: string;
 	children?: ReactNode;
+	className?: string;
 }
 
 const A: FC<AnchorProps> = ({ children, href }) => {
@@ -14,10 +15,10 @@ const A: FC<AnchorProps> = ({ children, href }) => {
 	);
 };
 
-const FancyA = React.forwardRef<HTMLAnchorElement, AnchorProps>(function FancyA({ children, href }, ref) {
+const FancyA = React.forwardRef<HTMLAnchorElement, AnchorProps>(function FancyA({ children, href, className }, ref) {
 	return (
 		<a
-			className="border-b-2 border-b-accent break-normal font-semibold dark:text-dark-anchor text-light-anchor hover:bg-accent hover:dark:text-dark-background hover:text-light-background"
+			className={`${className} border-b-2 border-b-accent break-normal font-semibold dark:text-dark-anchor text-light-anchor hover:bg-accent hover:dark:text-dark-background hover:text-light-background`}
 			ref={ref}
 			href={href}
 		>

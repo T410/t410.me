@@ -22,5 +22,11 @@ export const listArticles = () => {
 	const articlesFile = path.join(process.cwd(), "data/articles/articles.json");
 	const articles: Article[] = JSON.parse(fs.readFileSync(articlesFile, "utf8")).articles;
 
-	return articles;
+	const sortedArticles = articles.sort((a, b) => {
+		const aUnixTimestamp = Math.floor(new Date(a.published_at).getTime() / 1000);
+		const bUnixTimestamp = Math.floor(new Date(b.published_at).getTime() / 1000);
+		return bUnixTimestamp - aUnixTimestamp;
+	});
+
+	return sortedArticles;
 };

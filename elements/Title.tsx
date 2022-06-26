@@ -5,8 +5,8 @@ interface TitleProps {
 	className?: HTMLAttributes<HTMLParagraphElement>["className"];
 }
 
-const Title: FC<TitleProps> = ({ children }) => {
-	return <h1 className="text-5xl font-semibold mb-3">{children}</h1>;
+const Title: FC<TitleProps> = ({ children, className }) => {
+	return <h1 className={`${className} text-5xl font-semibold mb-3`}>{children}</h1>;
 };
 
 const UnderlinedTitle: FC<TitleProps> = ({ children, className }) => {

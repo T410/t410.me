@@ -12,7 +12,6 @@ const Screen: FC<ScreenProps> = ({ children, showOn }) => {
 
 	const [shouldRender, setShouldRender] = useState(false);
 
-	console.log(showOn, screenSize);
 	useEffect(() => {
 		if (!showOn || screenSize >= showOn) {
 			setShouldRender(true);

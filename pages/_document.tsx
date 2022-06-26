@@ -8,13 +8,8 @@ const Document: FC = () => {
 	return (
 		<Html className={darkMode ? "dark" : "light"}>
 			<Head />
-			<body className="dark:bg-dark-background bg-light-background dark:text-dark-brightFont text-light-brightFont">
-				<Navbar />
-				<main className="max-w-3xl m-auto flex mt-14 flex-col p-4 md:p-8">
-					<div className="mt-6">
-						<Main />
-					</div>
-				</main>
+			<body className="dark:bg-dark-background bg-light-background dark:text-dark-brightFont text-light-brightFont selection:bg-accent selection:dark:text-dark-background selection:text-light-background">
+				<Main />
 				<NextScript />
 			</body>
 		</Html>

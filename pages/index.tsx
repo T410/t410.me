@@ -1,14 +1,9 @@
 import { FC, useContext } from "react";
-import { GetServerSideProps } from "next";
-import Image from "next/image";
-
-import { pp, devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
-
-import { DarkModeContext } from "contexts/DarkModeContext";
 import { A, FancyA, Icon, SubTitle, Title } from "elements";
-
-import { withSSRContext } from "aws-amplify";
-import { Heading } from "models";
+import Image from "next/image";
+import Link from "next/link";
+import { pp, devto, devto_black, github, github_black, linkedin, linkedin_black } from "assets";
+import { DarkModeContext } from "contexts/DarkModeContext";
 
 const Socials = () => {
 	const { darkMode } = useContext(DarkModeContext);
@@ -28,9 +23,9 @@ const Socials = () => {
 	);
 };
 
-const Home: FC<{ heading: Heading }> = ({ heading }) => {
+const Home: FC = () => {
 	return (
-		<div className="flex md:flex-row-reverse flex-col">
+		<div className="flex md:flex-row-reverse flex-col text-left">
 			<div className="w-32 h-32 mb-4 md:mb-0 md:ml-8 md:w-64 md:h-64">
 				<Image
 					src={pp}
@@ -41,29 +36,22 @@ const Home: FC<{ heading: Heading }> = ({ heading }) => {
 				/>
 			</div>
 			<div>
-				<Title>{heading.title}</Title>
-				<SubTitle classNames="max-w-lg">
-					I'm a software engineer in Turkey. I love learning and building <FancyA href="/projects">projects</FancyA> and
-					try to find time for <FancyA href="/articles">writing</FancyA> about what I learn. Well, this website is one
-					of my projects to try and show the things I learn.
+				<Title>Hi, I&apos;m Tayyib</Title>
+				<SubTitle className="max-w-lg">
+					I&apos;m a software engineer in Turkey. I love learning and building{" "}
+					<Link href="/projects" passHref>
+						<FancyA>projects</FancyA>
+					</Link>{" "}
+					and try to find time for{" "}
+					<Link href="/articles" passHref>
+						<FancyA>writing</FancyA>
+					</Link>{" "}
+					about what I learn. Well, this website is one of my projects to try and show the things I learn.
 				</SubTitle>
 				<Socials />
 			</div>
 		</div>
 	);
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-	const { DataStore } = withSSRContext({ req });
-	//@ts-ignore
-	const heading = await DataStore.query(Heading, (c) => c.route("eq", "/"));
-	console.log(heading);
-
-	return {
-		props: {
-			heading: JSON.parse(JSON.stringify(heading[0])),
-		},
-	};
 };
 
 export default Home;

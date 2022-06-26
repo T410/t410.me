@@ -1,0 +1,20 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "How to CI/CD using PM2 for your Node.js project",
+            "description": "You have a Node.js project in your local machine but you don't know how to deploy it to your remote server or you use old fashioned way by copying the contents from your computer to the remote server using FTP?",
+            "tags": [
+                "Node.js",
+                "CI/CD",
+                "PM2",
+                "CI",
+                "CD",
+                "Deployment"
+            ],
+            "published_at": "2021-02-15",
+            "updated_at": "2022-02-15",
+            "slug": "how-to-ci-cd-for-node-project-pm2"
+        }
+    ]
+}

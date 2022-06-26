@@ -53,6 +53,8 @@ export interface ScreenSizeContextState {
 	setScreenSize(screenSize: ScreenSize): void;
 }
 
+export type YearArticle = [number, ...Array<Article>][];
+
 export interface ArticleListing {
 	id: number;
 	title: string;
@@ -67,18 +69,20 @@ export interface Article {
 	id: number;
 	title: string;
 	description: string;
-	body_markdown: string;
-	body_html: string;
-	tag_list: string;
-	canonical_url: string;
+	content: string;
+	tags: string;
+	published_at: string;
+	updated_at: string;
+	slug: string;
 }
 
 export interface Project {
-	_id: string;
+	id: number;
 	title: string;
 	description: string;
 	demo: string;
 	source: string;
+	priority: number;
 }
 
 export interface Heading {

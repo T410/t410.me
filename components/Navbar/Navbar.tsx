@@ -1,20 +1,28 @@
 import { FC, ReactNode, useEffect, useState } from "react";
 import { Menu, ScreenSize } from "types";
 import { A } from "elements";
-import { Screen } from "components/Media";
+import NextLink, { LinkProps } from "next/link";
+import { useRouter } from "next/router";
 
-function NavItems() {
-	return (
-		<>
-			<A href={"/projects"}>Projects</A>
-			<A href={"/articles"}>Articles</A>
-			<A href={"/me"}>Me</A>
-		</>
-	);
+interface CustomLinkProps {
+	asPath: string;
+	children: ReactNode;
 }
 
+const Link: FC<CustomLinkProps & LinkProps> = ({ children, href, asPath }) => {
+	const isActive = asPath === href;
+	const activeClass = isActive ? "dark:bg-dark-navbarHover bg-light-navbarHover" : "";
+
+	return (
+		<NextLink href={href}>
+			<a className={`${activeClass} gap-2 rounded-lg p-2 hover:dark:bg-dark-navbarHover hover:bg-light-navbarHover`}>
+				{children}
+			</a>
+		</NextLink>
+	);
+};
 const Section: FC<{ children: ReactNode }> = ({ children }) => {
-	return <div className="flex items-center space-x-4"></div>;
+	return <div className="flex items-center space-x-4">{children}</div>;
 };
 
 const Nav: FC<{ children: ReactNode }> = ({ children }) => (
@@ -24,28 +32,24 @@ const Nav: FC<{ children: ReactNode }> = ({ children }) => (
 );
 
 const Navbar = () => {
-	const menuState = useState<Menu>(Menu.Undefined);
-	const location = { pathname: "/" };
-
-	useEffect(() => {
-		const m = location.pathname.split("/")[1] as unknown;
-		if ((m as string) === "") {
-			menuState[1](Menu["Me"]);
-		} else {
-			menuState[1](m as Menu);
-		}
-	}, [location.pathname, menuState]);
+	const { asPath } = useRouter();
 
 	return (
 		<>
 			<Nav>
-				<Screen showOn={ScreenSize.S}>
-					<Section>
-						<A href={"/"}>Tayyib Cankat</A>
-					</Section>
-				</Screen>
 				<Section>
-					<NavItems />
+					<Link href="/" asPath={asPath}>
+						Tayyib Cankat
+					</Link>
+				</Section>
+				<Section>
+					<Link href="/projects" asPath={asPath}>
+						Projects
+					</Link>
+					<Link href="/articles" asPath={asPath}>
+						Articles
+					</Link>
+					{/* <Link href="/me">Me</Link> */}
 				</Section>
 			</Nav>
 		</>

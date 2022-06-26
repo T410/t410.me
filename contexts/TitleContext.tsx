@@ -32,11 +32,9 @@ const setTitle = (title: string) => {
 
 const LocationProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [pathname, setPathname] = useState<string>(contextDefaultValues.pathname);
-	const router = useRouter();
 	// const { setMetaTitle } = useContext(MetaTagContext);
 
 	useEffect(() => {
-		console.log(router.query);
 		// const match = matchPath("/articles/:id/:slug", pathname);
 		let title = "Software Engineer";
 

@@ -51,7 +51,7 @@ function parseGist(str: string) {
 	const match = str.match(regex);
 	if (match) {
 		match.forEach((m) => {
-			str = str.replaceAll(m, m.replace(regex, "$1"));
+			str = str.replace(m, m.replace(regex, "$1"));
 		});
 	}
 	return str;

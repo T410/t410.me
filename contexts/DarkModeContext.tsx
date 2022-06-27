@@ -8,6 +8,14 @@ const contextDefaultValues: DarkModeContextState = {
 	setDarkMode: () => {},
 };
 
+const manageDocument = (val: boolean) => {
+	if (val) {
+		document?.documentElement?.classList.add("dark");
+	} else {
+		document?.documentElement?.classList.remove("dark");
+	}
+};
+
 export const DarkModeContext = createContext<DarkModeContextState>(contextDefaultValues);
 
 const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -15,11 +23,17 @@ const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 		stateName: "darkMode",
 		initialValue: contextDefaultValues.darkMode,
 	});
+
 	const [darkMode, setDarkMode] = useState<boolean>(persistedDarkMode);
 
 	useEffect(() => {
 		setPersistedDarkMode(darkMode);
 	}, [darkMode, setPersistedDarkMode]);
+
+	useEffect(() => {
+		manageDocument(darkMode);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<DarkModeContext.Provider
@@ -27,6 +41,7 @@ const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
 				darkMode,
 				setDarkMode: (val: boolean) => {
 					setDarkMode(val);
+					manageDocument(val);
 				},
 			}}
 		>

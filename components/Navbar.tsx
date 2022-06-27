@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
+import { DarkModeToggle } from "elements";
 
 interface CustomLinkProps {
 	asPath: string;
@@ -50,6 +51,7 @@ const Navbar: FC = () => {
 					<Link href="/articles" asPath={asPath}>
 						Articles
 					</Link>
+					<DarkModeToggle />
 					{/* <Link href="/me">Me</Link> */}
 				</Section>
 			</Nav>

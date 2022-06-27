@@ -1,3 +1,4 @@
+import { AnalyticsNoScript } from "elements/Analytics";
 import { Html, Head, Main, NextScript } from "next/document";
 import { FC } from "react";
 
@@ -10,6 +11,7 @@ const Document: FC = () => {
 				<link rel="shortcut icon" href="/logo_big.png" />
 			</Head>
 			<body className="dark:bg-dark-background bg-light-background dark:text-dark-brightFont text-light-brightFont selection:bg-accent selection:dark:text-dark-background selection:text-light-background">
+				<AnalyticsNoScript />
 				<Main />
 				<NextScript />
 			</body>

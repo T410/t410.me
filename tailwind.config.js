@@ -38,6 +38,7 @@ module.exports = {
 			accent: "#fdb54a",
 			tagFrom: "#60a5fa",
 			tagTo: "#f472b6",
+			moon: "#e0e0e0",
 		},
 		extend: {
 			gridTemplateColumns: {
@@ -48,6 +49,20 @@ module.exports = {
 			spacing: {
 				"0.4rem": "0.4rem",
 				"0.6rem": "0.6rem",
+			},
+			keyframes: {
+				spread: {
+					"0%": { transform: "translateX(15px)" },
+					"100%": { transform: "translateX(0)" },
+				},
+				unspread: {
+					"0%": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(15px)" },
+				},
+			},
+			animation: {
+				spread: "spread 0.5s cubic-bezier(0.5, -0.6, 0.2, 0) forwards",
+				unspread: "unspread 0.5s cubic-bezier(0.5, 1.5, 0.5, 1.5) forwards",
 			},
 		},
 	},

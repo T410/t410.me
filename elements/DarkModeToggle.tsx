@@ -12,7 +12,7 @@ const DarkModeToggle: FC = () => {
 	};
 
 	return (
-		<div className="cursor-pointer px-4 relative" onClick={onClickHandler}>
+		<div className="cursor-pointer px-2 sm:px-4 relative" onClick={onClickHandler}>
 			<div className="z-10 flex justify-center items-center w-4 h-4 rounded-full dark:bg-moon bg-accent"></div>
 			<div className="-z-10 absolute w-4 h-4 flex items-center justify-center top-0">
 				{arr.map((x, i) => (

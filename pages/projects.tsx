@@ -23,7 +23,7 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 			</header>
 			<div className="flex flex-row flex-wrap align-center justify-center gap-4">
 				{projects.map((project) => (
-					<Card key={project.id} className="max-w-xs p-[2px] gradient-round">
+					<Card key={project.id} className="max-w-xs p-1 gradient-round">
 						<Card className="">
 							<h1 className="text-accent mt-0 font-semibold text-2xl">{project.title}</h1>
 							<div className="flex flex-row justify-center space-x-4 mt-4">

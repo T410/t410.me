@@ -15,6 +15,7 @@ const usePersist = <T>({ stateName, initialValue }: UsePersistProps<T>): [T, (va
 				return val;
 			} else {
 				localStorage.setItem(name, JSON.stringify(initialValue));
+				return initialValue;
 			}
 		} catch {
 			return initialValue;

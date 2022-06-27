@@ -3,7 +3,7 @@
         {
             "id": 1,
             "title": "How to CI/CD using PM2 for your Node.js project",
-            "description": "You have a Node.js project in your local machine but you don't know how to deploy it to your remote server or you use old fashioned way by copying the contents from your computer to the remote server using FTP?",
+            "description": "Learn how to continuously integrate and continuously deploy (CI/CD) your Node.js project using PM2.",
             "tags": [
                 "Node.js",
                 "CI/CD",

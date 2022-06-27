@@ -1,38 +1,10 @@
-import { GetServerSideProps } from "next";
-import Link from "next/link";
-import { listArticles } from "lib/api";
-import { title } from "meta";
-
-import { FC, forwardRef, ReactNode } from "react";
+import { withSSRContext } from "aws-amplify";
 import { SubTitle, Title, UnderlinedTitle } from "elements";
-import { Head } from "components";
-
-import { Article, YearArticle } from "types";
-
-const splitByYear = (articles: Article[]) => {
-	const years: YearArticle = [];
-
-	articles.forEach((article) => {
-		const year = article.published_at.split("-")[0];
-		const foundYear = years.find(([x]) => x === Number(year));
-		if (!foundYear) {
-			years.push([Number(year), article]);
-		} else {
-			foundYear.push(article);
-		}
-	});
-	return years;
-};
-
-export const getStaticProps: GetServerSideProps = async ({ req }) => {
-	const articles = listArticles();
-
-	return {
-		props: {
-			articles: splitByYear(articles),
-		},
-	};
-};
+import { Heading } from "models";
+import { GetServerSideProps } from "next";
+import Link, { LinkProps } from "next/link";
+import { FC, forwardRef, ReactNode } from "react";
+import { ArticleListing, YearArticle } from "types";
 
 interface AnchorProps {
 	href?: string;
@@ -64,23 +36,16 @@ const parseDate = (_date: string) => {
 const Articles: FC<{ articles: YearArticle }> = ({ articles }) => {
 	return (
 		<div>
-			<Head
-				title={`Articles, tutorials, write-ups | ${title}`}
-				description="Technical articles, tutorials I have written."
-			/>
-
 			<header className="text-center">
 				<Title>Articles</Title>
-				<SubTitle className="!text-2xl text">
-					Technical articles, tutorials, write-ups including TypeScript, React, JavaScript.
-				</SubTitle>
+				<SubTitle className="!text-2xl">Technical articles, tutorials I have written.</SubTitle>
 			</header>
 			{articles.map(([year, ...articles], i) => (
 				<div key={i}>
 					<UnderlinedTitle className="text-accent">{year}</UnderlinedTitle>
 					{articles.map(({ id, title, slug, published_at }) => (
 						<div key={id}>
-							<Link href={`/article/${slug}`} passHref>
+							<Link href={`/articles/${id}`} passHref>
 								<ArticleRow>
 									<ArticleName>{title}</ArticleName>
 									<Time>{parseDate(published_at)}</Time>
@@ -92,6 +57,33 @@ const Articles: FC<{ articles: YearArticle }> = ({ articles }) => {
 			))}
 		</div>
 	);
+};
+
+const splitByYear = (articles: ArticleListing[]) => {
+	const years: YearArticle = [];
+
+	articles.forEach((article) => {
+		const year = article.published_at.split("-")[0];
+		const foundYear = years.find(([x]) => x === Number(year));
+		if (!foundYear) {
+			years.push([Number(year), article]);
+		} else {
+			foundYear.push(article);
+		}
+	});
+	return years;
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+	//@ts-ignore
+	const res = await fetch("https://dev.to/api/articles?username=t410");
+	const articles: ArticleListing[] = await res.json();
+
+	return {
+		props: {
+			articles: splitByYear(articles),
+		},
+	};
 };
 
 export default Articles;

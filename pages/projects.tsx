@@ -12,7 +12,7 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<div>
 			<Head
-				title={`Projects | ${title}`}
+				title={`Typescript and JavaScript Projects | ${title}`}
 				description="Some of the projects of mine. Most of these are developed to get me learn new things and/or improve my skills."
 			/>
 			<header className="text-center">

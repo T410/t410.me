@@ -15,7 +15,6 @@ import { theme } from "tailwind.config";
 
 import type { Article } from "types";
 import type { ReactMarkdownProps } from "react-markdown/lib/complex-types";
-import { articleSuffix } from "meta";
 
 interface Params extends ParsedUrlQuery {
 	slug: string;
@@ -139,7 +138,7 @@ const Tags: FC<{ tags: string[] }> = ({ tags }) => {
 const Article: FC<Article> = ({ title, content, published_at, description, tags }) => {
 	return (
 		<article className="w-full !break-words">
-			<Head title={`${title} ${articleSuffix}`} description={description} />
+			<Head title={`${title}`} description={description} />
 
 			<Title>{title}</Title>
 			<p className="font-mono text-right w-full text-sm mb-8">

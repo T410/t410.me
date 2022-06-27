@@ -52,7 +52,6 @@ const Navbar: FC = () => {
 						Articles
 					</Link>
 					<DarkModeToggle />
-					{/* <Link href="/me">Me</Link> */}
 				</Section>
 			</Nav>
 		</>

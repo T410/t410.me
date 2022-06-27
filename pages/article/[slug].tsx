@@ -104,10 +104,10 @@ const Pre: FC<MarkdownProps> = ({ node }) => {
 				language={node.children[0].properties.className?.[0]?.split("-")[1] || "typescript"}
 				style={a11yDark}
 				customStyle={{
-					backgroundColor: darkMode ? theme.colors.dark.code.background : theme.colors.light.code.background,
+					backgroundColor: theme.colors.dark.code.background,
 					padding: "16px",
 					border: "1px solid",
-					borderColor: darkMode ? theme.colors.dark.lightBorderColor : theme.colors.light.lightBorderColor,
+					borderColor: theme.colors.dark.lightBorderColor,
 					borderRadius: "0.5rem",
 				}}
 			>

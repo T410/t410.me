@@ -59,10 +59,22 @@ module.exports = {
 					"0%": { transform: "translateX(0)" },
 					"100%": { transform: "translateX(15px)" },
 				},
+				moveRight: {
+					"0%": { transform: "translateX(0.5rem)", opacity: 1 },
+					"50%": { opacity: 0 },
+					"100%": { transform: "translateX(1rem)", opacity: 0 },
+				},
+				moveLeft: {
+					"0%": { transform: "translateX(1rem)", opacity: 0 },
+					"50%": { opacity: 1 },
+					"100%": { transform: "translateX(0.5rem)", opacity: 1 },
+				},
 			},
 			animation: {
 				spread: "spread 0.5s cubic-bezier(0.5, -0.6, 0.2, 0) forwards",
 				unspread: "unspread 0.5s cubic-bezier(0.5, 1.5, 0.5, 1.5) forwards",
+				moveRight: "moveRight 0.25s ease-in-out forwards",
+				moveLeft: "moveLeft 0.25s ease-in-out forwards",
 			},
 		},
 	},

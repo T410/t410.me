@@ -129,7 +129,7 @@ const Pre: FC<MarkdownProps> = ({ node }) => {
 
 const Tags: FC<{ tags: string[] }> = ({ tags }) => {
 	return (
-		<div className="mb-4 flex flex-row justify-center space-x-4">
+		<div className="mb-2 flex flex-row flex-wrap justify-center space-x-4">
 			{tags.length > 0 && tags.map((tag, id) => <Tag key={id}>#{tag}</Tag>)}
 		</div>
 	);

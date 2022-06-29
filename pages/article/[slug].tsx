@@ -3,11 +3,11 @@ import { getArticleBySlug, listArticles } from "lib/api";
 import { ParsedUrlQuery } from "querystring";
 
 import { FC, ReactNode, useContext } from "react";
-import { Head } from "components";
+import { Head, Gist } from "components";
+import { FancyA, Tag, Title, UnderlinedTitle } from "elements";
+
 import ReactMarkdown from "react-markdown";
 import { DarkModeContext } from "contexts/DarkModeContext";
-import { FancyA, Tag, Title, UnderlinedTitle } from "elements";
-import Gist from "react-gist";
 import gfm from "remark-gfm";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import a11yDark from "react-syntax-highlighter/dist/cjs/styles/hljs/a11y-dark";

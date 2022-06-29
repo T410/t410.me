@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { FC, useContext } from "react";
 import { A, Card, FancyA, Icon, SubTitle, Title } from "elements";
@@ -50,13 +49,7 @@ const Home: FC = () => {
 				<Title>Hi, I&apos;m Tayyib</Title>
 				<SubTitle className="max-w-lg">
 					I&apos;m a software engineer in Turkey. I love learning and building{" "}
-					<Link href="/projects" passHref>
-						<FancyA>projects</FancyA>
-					</Link>{" "}
-					and try to find time for{" "}
-					<Link href="/articles" passHref>
-						<FancyA>writing</FancyA>
-					</Link>{" "}
+					<FancyA href="/projects">projects</FancyA> and try to find time for <FancyA href="/articles">writing</FancyA>{" "}
 					about what I learn. Well, this website is one of my projects to try and show the things I learn.
 				</SubTitle>
 				<Socials />

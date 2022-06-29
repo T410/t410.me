@@ -1,28 +1,30 @@
-import React, { FC, ReactNode } from "react";
+import Link, { LinkProps as NextLinkProps } from "next/link";
+import React, { FC, forwardRef, ReactNode } from "react";
 
-interface AnchorProps {
-	href?: string;
-	children?: ReactNode;
+type LinkProps = NextLinkProps & {
 	className?: string;
-}
-
-const A: FC<AnchorProps> = ({ children, href }) => {
-	return (
-		<a href={href} className="no-underline hover:underline hover:cursor-pointer">
-			{children}
-		</a>
-	);
+	children: ReactNode;
 };
 
-const FancyA = React.forwardRef<HTMLAnchorElement, AnchorProps>(function FancyA({ children, href, className }, ref) {
+const A = forwardRef<HTMLAnchorElement, LinkProps>(function Inner({ children, href }, ref) {
 	return (
-		<a
-			className={`${className} border-b-2 border-b-accent break-normal font-semibold dark:text-dark-anchor text-light-anchor hover:bg-accent hover:dark:text-dark-background hover:text-light-background`}
-			ref={ref}
-			href={href}
-		>
-			{children}
-		</a>
+		<Link href={href} ref={ref}>
+			<a className="no-underline hover:underline hover:cursor-pointer">{children}</a>
+		</Link>
+	);
+});
+
+const FancyA = forwardRef<HTMLAnchorElement, LinkProps>(function Inner({ children, href, className }, ref) {
+	return (
+		<Link href={href} ref={ref}>
+			<a
+				className={`${
+					className || ""
+				} border-b-2 border-b-accent break-normal font-semibold dark:text-dark-anchor text-light-anchor hover:bg-accent hover:dark:text-dark-background hover:text-light-background`}
+			>
+				{children}
+			</a>
+		</Link>
 	);
 });
 

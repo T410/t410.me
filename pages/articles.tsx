@@ -3,7 +3,7 @@ import Link from "next/link";
 import { listArticles } from "lib/api";
 import { title } from "meta";
 
-import { FC, forwardRef, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { SubTitle, Title, UnderlinedTitle } from "elements";
 import { Head } from "components";
 
@@ -30,24 +30,24 @@ export const getStaticProps: GetServerSideProps = async ({ req }) => {
 	return {
 		props: {
 			articles: splitByYear(articles),
+			slugs: articles.map((article) => article.slug),
 		},
 	};
 };
 
 interface AnchorProps {
-	href?: string;
-	children?: ReactNode;
+	href: string;
+	children: ReactNode;
 }
-const ArticleRow = forwardRef<HTMLAnchorElement, AnchorProps>(function ArticleRow({ children, href }, ref) {
+const ArticleRow: FC<AnchorProps> = ({ children, href }) => {
 	return (
-		<a
-			href={href}
-			className="grid grid-cols-auto-60 flex-row gap-4 align-center align-middle -mx-4 py-2 px-4 rounded-lg hover:dark:bg-dark-darkOpacity hover:bg-light-darkOpacity"
-		>
-			{children}
-		</a>
+		<Link href={href}>
+			<a className="grid grid-cols-auto-60 flex-row gap-4 align-center align-middle -mx-4 py-2 px-4 rounded-lg hover:dark:bg-dark-darkOpacity hover:bg-light-darkOpacity">
+				{children}
+			</a>
+		</Link>
 	);
-});
+};
 
 const ArticleName: FC<{ children: ReactNode }> = ({ children }) => {
 	return <span className="text-light-brightFont dark:text-dark-brightFont font-medium text-base">{children}</span>;
@@ -61,7 +61,7 @@ const parseDate = (_date: string) => {
 	return new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit" }).format(new Date(_date));
 };
 
-const Articles: FC<{ articles: YearArticle }> = ({ articles }) => {
+const Articles: FC<{ articles: YearArticle; slugs: string[] }> = ({ articles }) => {
 	return (
 		<div>
 			<Head
@@ -80,12 +80,10 @@ const Articles: FC<{ articles: YearArticle }> = ({ articles }) => {
 					<UnderlinedTitle className="text-accent">{year}</UnderlinedTitle>
 					{articles.map(({ id, title, slug, published_at }) => (
 						<div key={id}>
-							<Link href={`/article/${slug}`} passHref>
-								<ArticleRow>
-									<ArticleName>{title}</ArticleName>
-									<Time>{parseDate(published_at)}</Time>
-								</ArticleRow>
-							</Link>
+							<ArticleRow href={`/article/${slug}`}>
+								<ArticleName>{title}</ArticleName>
+								<Time>{parseDate(published_at)}</Time>
+							</ArticleRow>
 						</div>
 					))}
 				</div>

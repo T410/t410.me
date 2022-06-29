@@ -75,19 +75,21 @@ const Articles: FC<{ articles: YearArticle; slugs: string[] }> = ({ articles }) 
 					Technical articles, tutorials, write-ups including TypeScript, React, JavaScript.
 				</SubTitle>
 			</header>
-			{articles.map(([year, ...articles], i) => (
-				<div key={i}>
-					<UnderlinedTitle className="text-accent">{year}</UnderlinedTitle>
-					{articles.map(({ id, title, slug, published_at }) => (
-						<div key={id}>
-							<ArticleRow href={`/article/${slug}`}>
-								<ArticleName>{title}</ArticleName>
-								<Time>{parseDate(published_at)}</Time>
-							</ArticleRow>
-						</div>
-					))}
-				</div>
-			))}
+			<div className="space-y-4">
+				{articles.map(([year, ...articles], i) => (
+					<div key={i}>
+						<UnderlinedTitle className="text-accent">{year}</UnderlinedTitle>
+						{articles.map(({ id, title, slug, published_at }) => (
+							<div key={id}>
+								<ArticleRow href={`/article/${slug}`}>
+									<ArticleName>{title}</ArticleName>
+									<Time>{parseDate(published_at)}</Time>
+								</ArticleRow>
+							</div>
+						))}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

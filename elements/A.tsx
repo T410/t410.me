@@ -17,10 +17,11 @@ const A: LinkFC = ({ children, href, target }) => {
 	);
 };
 
-const FancyA: LinkFC = ({ children, href, className }) => {
+const FancyA: LinkFC = ({ children, href, className, target }) => {
 	return (
 		<Link
 			href={href}
+			target={target}
 			className={`${
 				className || ""
 			} border-b-2 border-b-accent break-normal font-semibold dark:text-dark-anchor text-light-anchor hover:bg-accent hover:dark:text-dark-background hover:text-light-background`}

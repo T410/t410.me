@@ -5,13 +5,13 @@ import { ParsedUrlQuery } from "querystring";
 import { FC, ReactNode, useContext } from "react";
 import { Head, Gist } from "components";
 import { FancyA, Tag, Title, UnderlinedTitle } from "elements";
-
 import ReactMarkdown from "react-markdown";
-import { DarkModeContext } from "contexts/DarkModeContext";
 import gfm from "remark-gfm";
+import { DarkModeContext } from "contexts/DarkModeContext";
+
+import { theme } from "tailwind.config";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import a11yDark from "react-syntax-highlighter/dist/cjs/styles/hljs/a11y-dark";
-import { theme } from "tailwind.config";
 
 import type { Article } from "types";
 import type { ReactMarkdownProps } from "react-markdown/lib/complex-types";

@@ -2,7 +2,9 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-	newNextLinkBehavior: true,
+	experimental: {
+		newNextLinkBehavior: true,
+	},
 };
 
 module.exports = nextConfig;

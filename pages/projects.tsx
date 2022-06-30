@@ -27,8 +27,12 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 						<Card className="">
 							<h1 className="text-accent mt-0 font-semibold text-2xl">{project.title}</h1>
 							<div className="flex flex-row justify-center space-x-4 mt-4">
-								<Button href={project.demo}>Demo</Button>
-								<Button href={project.source}>Source</Button>
+								<Button href={project.demo} target="_blank">
+									Demo
+								</Button>
+								<Button href={project.source} target="_blank">
+									Source
+								</Button>
 							</div>
 							<SubTitle className="break-words !mb-0 mt-4">{project.description}</SubTitle>
 						</Card>

@@ -7,9 +7,9 @@ import { FC, ReactNode } from "react";
 import { SubTitle, Title, UnderlinedTitle } from "elements";
 import { Head } from "components";
 
-import { Article, YearArticle } from "types";
+import { ArticleInterface, YearArticle } from "types";
 
-const splitByYear = (articles: Article[]) => {
+const splitByYear = (articles: ArticleInterface[]) => {
 	const years: YearArticle = [];
 
 	articles.forEach((article) => {
@@ -33,20 +33,6 @@ export const getStaticProps: GetServerSideProps = async ({ req }) => {
 			slugs: articles.map((article) => article.slug),
 		},
 	};
-};
-
-interface AnchorProps {
-	href: string;
-	children: ReactNode;
-}
-const ArticleRow: FC<AnchorProps> = ({ children, href }) => {
-	return (
-		<Link href={href}>
-			<a className="grid grid-cols-auto-60 flex-row gap-4 align-center align-middle -mx-4 py-2 px-4 rounded-lg hover:dark:bg-dark-darkOpacity hover:bg-light-darkOpacity">
-				{children}
-			</a>
-		</Link>
-	);
 };
 
 const ArticleName: FC<{ children: ReactNode }> = ({ children }) => {
@@ -81,10 +67,16 @@ const Articles: FC<{ articles: YearArticle; slugs: string[] }> = ({ articles }) 
 						<UnderlinedTitle className="text-accent">{year}</UnderlinedTitle>
 						{articles.map(({ id, title, slug, published_at }) => (
 							<div key={id}>
-								<ArticleRow href={`/article/${slug}`}>
-									<ArticleName>{title}</ArticleName>
-									<Time>{parseDate(published_at)}</Time>
-								</ArticleRow>
+								<Link
+									href={`/article/${slug}`}
+									passHref
+									className="grid grid-cols-auto-60 flex-row gap-4 align-center align-middle -mx-4 py-2 px-4 rounded-lg hover:dark:bg-dark-darkOpacity hover:bg-light-darkOpacity"
+								>
+									<>
+										<ArticleName>{title}</ArticleName>
+										<Time>{parseDate(published_at)}</Time>
+									</>
+								</Link>
 							</div>
 						))}
 					</div>

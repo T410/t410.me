@@ -13,12 +13,11 @@ const Link: FC<CustomLinkProps & LinkProps> = ({ children, href, asPath }) => {
 	const activeClass = isActive ? "dark:bg-dark-navbarHover bg-light-navbarHover" : "";
 
 	return (
-		<NextLink href={href}>
-			<a
-				className={`${activeClass} gap-2 rounded-lg p-1 sm:p-2 hover:dark:bg-dark-navbarHover hover:bg-light-navbarHover font-medium`}
-			>
-				{children}
-			</a>
+		<NextLink
+			href={href}
+			className={`${activeClass} gap-2 rounded-lg p-1 sm:p-2 hover:dark:bg-dark-navbarHover hover:bg-light-navbarHover font-medium`}
+		>
+			{children}
 		</NextLink>
 	);
 };

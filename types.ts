@@ -3,9 +3,9 @@ export interface DarkModeContextState {
 	setDarkMode(darkMode: boolean): void;
 }
 
-export type YearArticle = [number, ...Array<Article>][];
+export type YearArticle = [number, ...Array<ArticleInterface>][];
 
-export interface Article {
+export interface ArticleInterface {
 	id: number;
 	title: string;
 	description: string;

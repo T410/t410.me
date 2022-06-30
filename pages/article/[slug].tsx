@@ -13,7 +13,7 @@ import { theme } from "tailwind.config";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import a11yDark from "react-syntax-highlighter/dist/cjs/styles/hljs/a11y-dark";
 
-import type { Article } from "types";
+import type { ArticleInterface } from "types";
 import type { ReactMarkdownProps } from "react-markdown/lib/complex-types";
 
 interface Params extends ParsedUrlQuery {
@@ -135,7 +135,7 @@ const Tags: FC<{ tags: string[] }> = ({ tags }) => {
 	);
 };
 
-const Article: FC<Article> = ({ title, content, published_at, description, tags }) => {
+const Article: FC<ArticleInterface> = ({ title, content, published_at, description, tags }) => {
 	return (
 		<article className="w-full !break-words">
 			<Head title={`${title}`} description={description} />
@@ -164,9 +164,12 @@ const Article: FC<Article> = ({ title, content, published_at, description, tags 
 							return <Gist id={gistId} />;
 						}
 						return (
-							<FancyA href={props.href} className="break-all">
-								{props.children}
-							</FancyA>
+							<>
+								<FancyA href={props.href} className="break-all after:content-['_\29C9']" target="_blank">
+									{props.children}
+								</FancyA>
+								<br />
+							</>
 						);
 					},
 					ul: (props: ReactMarkdownProps) => (

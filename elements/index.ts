@@ -1,8 +1,7 @@
 import Tag from "./Tag";
 import Icon from "./Icon";
 import Card from "./Card";
-import Button from "./Button";
-import { A, FancyA } from "./A";
+import { A, FancyA, Button } from "./A";
 import DarkModeToggle from "./DarkModeToggle";
 import { Title, SubTitle, UnderlinedTitle } from "./Title";
 

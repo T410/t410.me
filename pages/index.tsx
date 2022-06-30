@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { FC, useContext } from "react";
 import { A, Card, FancyA, Icon, SubTitle, Title } from "elements";
@@ -13,15 +14,15 @@ const Socials = () => {
 
 	return (
 		<div className="space-x-2 mt-4">
-			<A href="https://github.com/T410">
+			<Link href="https://github.com/T410" target={"_blank"}>
 				<Icon src={darkMode ? github : github_black} alt="github link" />
-			</A>
-			<A href="https://dev.to/T410">
+			</Link>
+			<Link href="https://dev.to/T410" target={"_blank"}>
 				<Icon src={darkMode ? devto : devto_black} alt="devto link" />
-			</A>
-			<A href="https://linkedin.com/in/MT410">
+			</Link>
+			<Link href="https://linkedin.com/in/MT410" target={"_blank"}>
 				<Icon src={darkMode ? linkedin : linkedin_black} alt="Linkedin link" />
-			</A>
+			</Link>
 		</div>
 	);
 };

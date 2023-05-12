@@ -1,28 +1,28 @@
 {
-    "projects": [
-        {
-            "id": 1,
-            "title": "t410.me",
-            "description": "I developed this very site for demonstration purposes",
-            "demo": "https://www.t410.me/",
-            "source": "https://github.com/T410/t410.me",
-            "priority": 1
-        },
-        {
-            "id": 2,
-            "title": "Pomodoro Timer",
-            "description": "Pomodoro Timer to keep track of work and break times",
-            "demo": "https://pomodoro.t410.me/",
-            "source": "https://github.com/T410/pomodoro",
-            "priority": 2
-        },
-        {
-            "id": 3,
-            "title": "Rock Paper Scissors",
-            "description": "RTS-like Rock Paper Scissors Simulator",
-            "demo": "https://rps.t410.me/",
-            "source": "https://github.com/T410/rock-paper-scissors",
-            "priority": 2
-        }
-    ]
+  "projects": [
+    {
+      "id": 1,
+      "title": "t410.me",
+      "description": "I developed this very site for demonstration purposes",
+      "demo": "https://t410-me.vercel.app/",
+      "source": "https://github.com/T410/t410.me",
+      "priority": 1
+    },
+    {
+      "id": 2,
+      "title": "Pomodoro Timer",
+      "description": "Pomodoro Timer to keep track of work and break times",
+      "demo": "https://pomodoro.vercel.app/",
+      "source": "https://github.com/T410/pomodoro",
+      "priority": 2
+    },
+    {
+      "id": 3,
+      "title": "Rock Paper Scissors",
+      "description": "RTS-like Rock Paper Scissors Simulator",
+      "demo": "https://rps.vercel.app/",
+      "source": "https://github.com/T410/rock-paper-scissors",
+      "priority": 2
+    }
+  ]
 }

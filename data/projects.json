@@ -12,7 +12,7 @@
       "id": 2,
       "title": "Pomodoro Timer",
       "description": "Pomodoro Timer to keep track of work and break times",
-      "demo": "https://pomodoro.vercel.app/",
+      "demo": "https://pomodoro-t410.vercel.app/",
       "source": "https://github.com/T410/pomodoro",
       "priority": 2
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "title": "Rock Paper Scissors",
       "description": "RTS-like Rock Paper Scissors Simulator",
-      "demo": "https://rps.vercel.app/",
+      "demo": "https://rock-paper-scissors-t410.vercel.app/",
       "source": "https://github.com/T410/rock-paper-scissors",
       "priority": 2
     }
